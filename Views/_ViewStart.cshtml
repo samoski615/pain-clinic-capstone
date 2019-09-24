@@ -1,0 +1,14 @@
+﻿@{
+    if (this.User.IsInRole("Patient"))
+    {
+        Layout = "~/Views/Shared/_LayoutPatientHome.cshtml";
+    }
+    else if (this.User.IsInRole("Provider"))
+    {
+        Layout = "~/Views/Shared/_LayoutProviderHome.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
