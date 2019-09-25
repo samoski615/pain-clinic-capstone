@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,7 +12,13 @@ namespace PainClinic.Models
     {
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public int Id { get; set; }
+        public Guid PatientId { get; set; }
+        public virtual ICollection<Provider> Providers { get; set; }
+
+        [ForeignKey("Clinic")]
+        [HiddenInput(DisplayValue = false)]
+        public int ClinicId { get; set; }
+        public Clinic Clinic { get; set; } 
 
         [Display(Name = "First Name")]
         [Required]
@@ -21,11 +28,11 @@ namespace PainClinic.Models
         [Required]
         public string LastName { get; set; }
 
-        [Display(Name = "Email Address")]
-        public string EmailAddress { get; set; }
+        //[Display(Name = "Email Address")]
+        //public string EmailAddress { get; set; }
 
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
+        //[Display(Name = "Phone Number")]
+        //public string PhoneNumber { get; set; }
 
         [Display(Name ="Address")]
         [Required]
@@ -43,11 +50,10 @@ namespace PainClinic.Models
         [Required]
         public string Zipcode { get; set; }
 
-        [Display(Name = "Request Received")]
-        public bool RxReceived { get; set; }
-
-        
-
+        [ForeignKey("ApplicationUser")]
+        [HiddenInput(DisplayValue = false)]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 
 }

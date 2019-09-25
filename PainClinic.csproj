@@ -48,6 +48,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -168,23 +169,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HcpsController.cs" />
+    <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909242153273_firstButNotLastMigration.cs" />
-    <Compile Include="Migrations\201909242153273_firstButNotLastMigration.Designer.cs">
-      <DependentUpon>201909242153273_firstButNotLastMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201909251649096_newMigration4.cs" />
+    <Compile Include="Migrations\201909251649096_newMigration4.Designer.cs">
+      <DependentUpon>201909251649096_newMigration4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
     <Compile Include="Models\DailyLog.cs" />
-    <Compile Include="Models\Hcp.cs" />
+    <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\ViewModels\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ListsViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
@@ -256,11 +257,12 @@
     <Content Include="Views\Patients\Details.cshtml" />
     <Content Include="Views\Patients\Edit.cshtml" />
     <Content Include="Views\Patients\Index.cshtml" />
-    <Content Include="Views\Hcps\Create.cshtml" />
-    <Content Include="Views\Hcps\Delete.cshtml" />
-    <Content Include="Views\Hcps\Details.cshtml" />
-    <Content Include="Views\Hcps\Edit.cshtml" />
-    <Content Include="Views\Hcps\Index.cshtml" />
+    <Content Include="Views\Providers\Create.cshtml" />
+    <Content Include="Views\Providers\Delete.cshtml" />
+    <Content Include="Views\Providers\Details.cshtml" />
+    <Content Include="Views\Providers\Edit.cshtml" />
+    <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\Patients\DailyLog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,8 +281,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909242153273_firstButNotLastMigration.resx">
-      <DependentUpon>201909242153273_firstButNotLastMigration.cs</DependentUpon>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909251649096_newMigration4.resx">
+      <DependentUpon>201909251649096_newMigration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

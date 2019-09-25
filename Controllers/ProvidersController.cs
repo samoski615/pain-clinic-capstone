@@ -11,7 +11,7 @@ using PainClinic.Models;
 
 namespace PainClinic.Controllers
 {
-    public class HcpsController : Controller
+    public class ProvidersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -28,7 +28,7 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hcp hcp = await db.Providers.FindAsync(id);
+            Provider hcp = await db.Providers.FindAsync(id);
             if (hcp == null)
             {
                 return HttpNotFound();
@@ -47,71 +47,71 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Hcp hcp)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Provider provider)
         {
             if (ModelState.IsValid)
             {
-                db.Providers.Add(hcp);
+                db.Providers.Add(provider);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(hcp);
+            return View(provider);
         }
 
-        // GET: Hcps/Edit/5
+        // GET: Provider/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hcp hcp = await db.Providers.FindAsync(id);
-            if (hcp == null)
+            Provider provider = await db.Providers.FindAsync(id);
+            if (provider == null)
             {
                 return HttpNotFound();
             }
-            return View(hcp);
+            return View(provider);
         }
 
-        // POST: Hcps/Edit/5
+        // POST: Provider/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Hcp hcp)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Provider provider)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hcp).State = EntityState.Modified;
+                db.Entry(provider).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(hcp);
+            return View(provider);
         }
 
-        // GET: Hcps/Delete/5
+        // GET: Provider/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Hcp hcp = await db.Providers.FindAsync(id);
-            if (hcp == null)
+            Provider provider = await db.Providers.FindAsync(id);
+            if (provider == null)
             {
                 return HttpNotFound();
             }
-            return View(hcp);
+            return View(provider);
         }
 
-        // POST: Hcps/Delete/5
+        // POST: Provider/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Hcp hcp = await db.Providers.FindAsync(id);
-            db.Providers.Remove(hcp);
+            Provider provider = await db.Providers.FindAsync(id);
+            db.Providers.Remove(provider);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

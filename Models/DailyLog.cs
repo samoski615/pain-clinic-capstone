@@ -11,7 +11,12 @@ namespace PainClinic.Models
     {
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public int Id { get; set; }
+        public int DailyLogId { get; set; }
+
+        [Display(Name = "Date")]
+        [Required(ErrorMessage = "Date is required")]
+        [DataType(DataType.DateTime)]
+        public DateTime TodaysDate { get; set; }
 
         [Display(Name = "Pain Scale")] 
         public SelectList PainRating { get; set; }
@@ -23,7 +28,10 @@ namespace PainClinic.Models
         public SelectList AmountOfSleep { get; set; }
 
         [Display(Name = "Level of Activity Today")] 
-        public SelectList ActivityLevel { get; set; }
-
+        public SelectList ActivityLevel { get; set; }  
+        
+        [Display(Name = "Brief description of events: ")]
+        [DataType(DataType.Text)]
+        public string DailyActivities { get; set; }
     }
 }
