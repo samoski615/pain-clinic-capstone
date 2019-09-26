@@ -12,8 +12,8 @@ namespace PainClinic.Models
     {
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public Guid ProviderId { get; set; }
-        public virtual ICollection<Patient> Patients { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProviderId { get; set; }
 
         [ForeignKey("Clinic")]
         [HiddenInput(DisplayValue = false)]

@@ -14,7 +14,16 @@ namespace PainClinic.Models
         [HiddenInput(DisplayValue = false)]
         public int ClinicId { get; set; }
 
+        [ForeignKey("Addresses")]
+        [HiddenInput(DisplayValue = false)]
+        public int? AddressesId { get; set; }
+        public Addresses Addresses { get; set; }
+
+        [Display(Name = "Clinic Name")]
+        public string ClinicName { get; set; }
+
         //[ForeignKey("Provider")]
+        //[HiddenInput(DisplayValue = false)]
         //public int ProviderId { get; set; }
         //public Provider Provider { get; set; }
 
@@ -23,28 +32,12 @@ namespace PainClinic.Models
         //public int PatientId { get; set; }
         //public Patient Patient { get; set; }
 
-        [Display(Name = "Name")]
-        public string Name { get; set; }
-
-        [Display(Name = "Address")]
-        public string Address { get; set; }
-
-        [Display(Name = "City")]
-        public string City { get; set; }
-
-        [Display(Name = "State")]
-        public string State { get; set; }
-
-        [Display(Name = "Zipcode")]
-        public string Zipcode { get; set; }
-
-        public Clinic()
-        {
-            this.Name = "Placeholder Until I Come Up With A Good Name";
-            this.Address = "959 W Mayfair Rd";
-            this.City = "Milwaukee";
-            this.State = "WI";
-            this.Zipcode = "53226";
-        }
+        //public Clinic()
+        //{
+        //    this.Name = "Placeholder Until I Come Up With A Good Name";
+        //    this.Address = "959 W Mayfair Rd";
+        //    this.City = "Milwaukee";
+        //    this.State = "WI";
+        //    this.Zipcode = "53226";
     }
 }

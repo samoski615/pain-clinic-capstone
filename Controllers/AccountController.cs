@@ -177,7 +177,7 @@ namespace PainClinic.Controllers
                         return RedirectToAction("Create", "Providers");
                     }
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details");
                 }
                 ViewBag.Name = new SelectList(db.Roles.ToList(), "Name", "Name");
                 AddErrors(result);

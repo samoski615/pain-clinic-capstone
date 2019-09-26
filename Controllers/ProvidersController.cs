@@ -15,25 +15,25 @@ namespace PainClinic.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Hcps
+        // GET: Providers
         public async Task<ActionResult> Index()
         {
             return View(await db.Providers.ToListAsync());
         }
 
-        // GET: Hcps/Details/5
+        // GET: Providers/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider hcp = await db.Providers.FindAsync(id);
-            if (hcp == null)
+            Provider provider = await db.Providers.FindAsync(id);
+            if (provider == null)
             {
                 return HttpNotFound();
             }
-            return View(hcp);
+            return View(provider);
         }
 
         // GET: Hcps/Create
@@ -47,7 +47,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Provider provider)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Prefix,FirstName,LastName")] Provider provider)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Provider provider)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Prefix,FirstName,LastName")] Provider provider)
         {
             if (ModelState.IsValid)
             {
