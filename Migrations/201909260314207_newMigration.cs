@@ -3,22 +3,33 @@ namespace PainClinic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newMigration4 : DbMigration
+    public partial class newMigration : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Addresses",
+                c => new
+                    {
+                        AddressesId = c.Int(nullable: false, identity: true),
+                        ClinicName = c.String(),
+                        StreetAddress = c.String(nullable: false),
+                        City = c.String(nullable: false),
+                        State = c.String(nullable: false),
+                        Zipcode = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.AddressesId);
+            
             CreateTable(
                 "dbo.Clinics",
                 c => new
                     {
                         ClinicId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Address = c.String(),
-                        City = c.String(),
-                        State = c.String(),
-                        Zipcode = c.String(),
+                        AddressesId = c.Int(),
                     })
-                .PrimaryKey(t => t.ClinicId);
+                .PrimaryKey(t => t.ClinicId)
+                .ForeignKey("dbo.Addresses", t => t.AddressesId)
+                .Index(t => t.AddressesId);
             
             CreateTable(
                 "dbo.DailyLogs",
@@ -47,19 +58,22 @@ namespace PainClinic.Migrations
                 c => new
                     {
                         PatientId = c.Guid(nullable: false),
-                        ClinicId = c.Int(nullable: false),
+                        ClinicId = c.Int(),
+                        AddressesId = c.Int(),
+                        DailyLogId = c.Int(),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
-                        Address = c.String(nullable: false),
-                        City = c.String(nullable: false),
-                        State = c.String(nullable: false),
-                        Zipcode = c.String(nullable: false),
+                        RxReceived = c.Boolean(nullable: false),
                         ApplicationId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.PatientId)
+                .ForeignKey("dbo.Addresses", t => t.AddressesId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.Clinics", t => t.ClinicId, cascadeDelete: true)
+                .ForeignKey("dbo.Clinics", t => t.ClinicId)
+                .ForeignKey("dbo.DailyLogs", t => t.DailyLogId)
                 .Index(t => t.ClinicId)
+                .Index(t => t.AddressesId)
+                .Index(t => t.DailyLogId)
                 .Index(t => t.ApplicationId);
             
             CreateTable(
@@ -125,7 +139,7 @@ namespace PainClinic.Migrations
                 c => new
                     {
                         ProviderId = c.Guid(nullable: false),
-                        ClinicId = c.Int(nullable: false),
+                        ClinicId = c.Int(),
                         Prefix = c.String(),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
@@ -134,7 +148,7 @@ namespace PainClinic.Migrations
                     })
                 .PrimaryKey(t => t.ProviderId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.Clinics", t => t.ClinicId, cascadeDelete: true)
+                .ForeignKey("dbo.Clinics", t => t.ClinicId)
                 .Index(t => t.ClinicId)
                 .Index(t => t.ApplicationId);
             
@@ -149,14 +163,14 @@ namespace PainClinic.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.ProviderPatientDirectory",
+                "dbo.ProviderPatients",
                 c => new
                     {
                         Provider_ProviderId = c.Guid(nullable: false),
                         Patient_PatientId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => new { t.Provider_ProviderId, t.Patient_PatientId })
-                .ForeignKey("dbo.Providers", t => t.Provider_ProviderId, cascadeDelete: false)
+                .ForeignKey("dbo.Providers", t => t.Provider_ProviderId, cascadeDelete: true)
                 .ForeignKey("dbo.Patients", t => t.Patient_PatientId, cascadeDelete: true)
                 .Index(t => t.Provider_ProviderId)
                 .Index(t => t.Patient_PatientId);
@@ -170,11 +184,14 @@ namespace PainClinic.Migrations
             DropForeignKey("dbo.ProviderPatients", "Provider_ProviderId", "dbo.Providers");
             DropForeignKey("dbo.Providers", "ClinicId", "dbo.Clinics");
             DropForeignKey("dbo.Providers", "ApplicationId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Patients", "DailyLogId", "dbo.DailyLogs");
             DropForeignKey("dbo.Patients", "ClinicId", "dbo.Clinics");
             DropForeignKey("dbo.Patients", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Patients", "AddressesId", "dbo.Addresses");
+            DropForeignKey("dbo.Clinics", "AddressesId", "dbo.Addresses");
             DropIndex("dbo.ProviderPatients", new[] { "Patient_PatientId" });
             DropIndex("dbo.ProviderPatients", new[] { "Provider_ProviderId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -186,7 +203,10 @@ namespace PainClinic.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Patients", new[] { "ApplicationId" });
+            DropIndex("dbo.Patients", new[] { "DailyLogId" });
+            DropIndex("dbo.Patients", new[] { "AddressesId" });
             DropIndex("dbo.Patients", new[] { "ClinicId" });
+            DropIndex("dbo.Clinics", new[] { "AddressesId" });
             DropTable("dbo.ProviderPatients");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Providers");
@@ -197,6 +217,7 @@ namespace PainClinic.Migrations
             DropTable("dbo.Patients");
             DropTable("dbo.DailyLogs");
             DropTable("dbo.Clinics");
+            DropTable("dbo.Addresses");
         }
     }
 }

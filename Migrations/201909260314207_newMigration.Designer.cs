@@ -7,13 +7,13 @@ namespace PainClinic.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class newMigration4 : IMigrationMetadata
+    public sealed partial class newMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(newMigration4));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(newMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909251649096_newMigration4"; }
+            get { return "201909260314207_newMigration"; }
         }
         
         string IMigrationMetadata.Source

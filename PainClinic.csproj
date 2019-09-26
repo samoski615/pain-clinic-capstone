@@ -176,11 +176,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909251649096_newMigration4.cs" />
-    <Compile Include="Migrations\201909251649096_newMigration4.Designer.cs">
-      <DependentUpon>201909251649096_newMigration4.cs</DependentUpon>
+    <Compile Include="Migrations\201909260314207_newMigration.cs" />
+    <Compile Include="Migrations\201909260314207_newMigration.Designer.cs">
+      <DependentUpon>201909260314207_newMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Addresses.cs" />
+    <Compile Include="Models\ViewModels\PatientRegistrationViewModel.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
@@ -190,7 +192,7 @@
     <Compile Include="Models\ViewModels\ListsViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
-    <Compile Include="Models\ViewModels\PatientDataViewModel.cs" />
+    <Compile Include="Models\ViewModels\PatientDailyLogViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -284,8 +286,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909251649096_newMigration4.resx">
-      <DependentUpon>201909251649096_newMigration4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909260314207_newMigration.resx">
+      <DependentUpon>201909260314207_newMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

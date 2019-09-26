@@ -13,11 +13,11 @@ namespace PainClinic.Models
         [Key]
         [HiddenInput(DisplayValue = false)]
         public Guid ProviderId { get; set; }
-        public virtual ICollection<Patient> Patients { get; set; }
+        public ICollection<Patient> Patients { get; set; }
 
         [ForeignKey("Clinic")]
         [HiddenInput(DisplayValue = false)]
-        public int ClinicId { get; set; }
+        public int? ClinicId { get; set; }
         public Clinic Clinic { get; set; }
 
         [Display(Name = "Prefix")]

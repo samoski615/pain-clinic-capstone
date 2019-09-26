@@ -8,17 +8,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PainClinic.Models;
+using PainClinic.Models.ViewModels;
 
 namespace PainClinic.Controllers
 {
     public class PatientsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Patients
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Patients.ToListAsync());
+            Models.Patient patientDetailsView = db.Patients.Where(p => p.PatientId == p.PatientId).FirstOrDefault();
+            return View(patientDetailsView);
         }
 
         // GET: Patients/Details/5
@@ -28,12 +30,10 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = await db.Patients.FindAsync(id);
-            if (patient == null)
-            {
-                return HttpNotFound();
-            }
-            return View(patient);
+
+            _ = new Patient();
+            Models.Patient patient = await db.Patients.FindAsync(id);
+            return patient == null ? HttpNotFound() : (ActionResult)View(patient);
         }
 
         // GET: Patients/Create
@@ -47,7 +47,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,PhoneNumber,Address,City,State,Zipcode")] Patient patient)
+        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,PhoneNumber,Addresses,City,State,Zipcode")] Models.Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = await db.Patients.FindAsync(id);
+            Models.Patient patient = await db.Patients.FindAsync(id);
             if (patient == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,PhoneNumber,Address,City,State,Zipcode")] Patient patient)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,PhoneNumber,Addresses,City,State,Zipcode")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Patient patient = await db.Patients.FindAsync(id);
+            Models.Patient patient = await db.Patients.FindAsync(id);
             if (patient == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace PainClinic.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Patient patient = await db.Patients.FindAsync(id);
+            Models.Patient patient = await db.Patients.FindAsync(id);
             db.Patients.Remove(patient);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PainClinic.Models;
+using PainClinic.Models.ViewModels;
+
 
 namespace PainClinic.Controllers
 {
@@ -28,12 +30,12 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider hcp = await db.Providers.FindAsync(id);
-            if (hcp == null)
+            Models.Provider provider = await db.Providers.FindAsync(id);
+            if (provider == null)
             {
                 return HttpNotFound();
             }
-            return View(hcp);
+            return View(provider);
         }
 
         // GET: Hcps/Create
@@ -47,7 +49,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Provider provider)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Models.Provider provider)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +68,7 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider provider = await db.Providers.FindAsync(id);
+            Models.Provider provider = await db.Providers.FindAsync(id);
             if (provider == null)
             {
                 return HttpNotFound();
@@ -79,7 +81,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Prefix,FirstName,LastName,RxReceived")] Provider provider)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Prefix,FirstName,LastName")] Provider provider)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +99,7 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Provider provider = await db.Providers.FindAsync(id);
+            Models.Provider provider = await db.Providers.FindAsync(id);
             if (provider == null)
             {
                 return HttpNotFound();
@@ -110,7 +112,7 @@ namespace PainClinic.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Provider provider = await db.Providers.FindAsync(id);
+            Models.Provider provider = await db.Providers.FindAsync(id);
             db.Providers.Remove(provider);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
