@@ -21,7 +21,7 @@ namespace PainClinic
             ApplicationDbContext db = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
-
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
 
             //Creating Customer Role
             if (!roleManager.RoleExists("Patient"))

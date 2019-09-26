@@ -11,5 +11,9 @@ namespace PainClinic.Models.ViewModels
         public Addresses Addresses { get; set; }
         //public ProviderPatientDirectory Directory { get; set; }
         public Clinic Clinic { get; set; }
+
+       
+
     }
+
 }

@@ -15,6 +15,7 @@ namespace PainClinic.Controllers
     public class PatientsController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();
+        //private readonly PatientRegistrationViewModel =
 
         // GET: Patients
         public ActionResult Index()
