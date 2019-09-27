@@ -15,10 +15,10 @@ namespace PainClinic.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PatientId { get; set; }
         
-        [ForeignKey("Clinic")]
-        [HiddenInput(DisplayValue = false)]
-        public int? ClinicId { get; set; }
-        public Clinic Clinic { get; set; }
+        //[ForeignKey("Clinic")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int? ClinicId { get; set; }
+        //public Clinic Clinic { get; set; }
 
         [ForeignKey("Addresses")]
         [HiddenInput(DisplayValue = false)]
@@ -39,6 +39,7 @@ namespace PainClinic.Models
         public string LastName { get; set; }
 
         [Display(Name = "Request Received")]
+        [HiddenInput(DisplayValue = false)]
         public bool RxReceived { get; set; }
 
         [ForeignKey("ApplicationUser")]

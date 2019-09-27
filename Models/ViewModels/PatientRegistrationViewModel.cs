@@ -8,6 +8,9 @@ namespace PainClinic.Models.ViewModels
     public class PatientRegistrationViewModel
     {
         public Patient Patient { get; set; }
-        public Addresses Addresses { get; set; }    
+        public Addresses Address { get; set; }
+        public List<Patient> Patients { get; set; }
+        public List<Addresses> Addresses { get; set; }
+
     }
 }

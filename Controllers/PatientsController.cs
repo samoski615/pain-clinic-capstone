@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PainClinic.Models;
+using PainClinic.Models.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace PainClinic.Controllers
 {
@@ -15,12 +17,16 @@ namespace PainClinic.Controllers
     {
 
         private readonly ApplicationDbContext db = new ApplicationDbContext();
-        //private readonly PatientRegistrationViewModel =
+        public PatientRegistrationViewModel viewModel { get; set; }
 
         // GET: Patients
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(await db.Patients.ToListAsync());
+            var currentUserId = User.Identity.GetUserId();
+            PatientRegistrationViewModel patient = new PatientRegistrationViewModel();
+            patient.Patient = db.Patients.Include(p => p.Addresses).Where(p => p.ApplicationId == currentUserId).First();
+                                              
+            return View(patient.Patient);
         }
 
         // GET: Patients/Details/5
@@ -49,16 +55,21 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,PhoneNumber,Address,City,State,Zipcode")] Patient patient)
+        public async Task<ActionResult> Create(PatientRegistrationViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Patients.Add(patient);
+                var currentUserId = User.Identity.GetUserId();
+                viewModel.Patient.ApplicationId = currentUserId;
+                var Patient = viewModel.Patient;
+                var Address = viewModel.Address;
+                db.Patients.Add(Patient);
+                db.Addresses.Add(Address);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(patient);
+            return View(viewModel);
         }
 
         // GET: Patients/Edit/5
@@ -81,7 +92,7 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,PhoneNumber,Address,City,State,Zipcode")] Patient patient)
+        public async Task<ActionResult> Edit([Bind(Include = "PatientId,FirstName,LastName,StreetAddress,City,State,Zipcode,AddressesId,ApplicationId,DailyLogId,RxReceived")] Patient patient)
         {
             if (ModelState.IsValid)
             {
