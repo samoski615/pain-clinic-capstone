@@ -10,14 +10,21 @@ namespace PainClinic.Models
 {
     public class Provider
     {
+        public Provider()
+        {
+            this.ClinicDirectories = new HashSet<ClinicDirectory>();
+        }
+
         [Key]
         [HiddenInput(DisplayValue = false)]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProviderId { get; set; }
 
-        [ForeignKey("Clinic")]
+        //public virtual ICollection<Patient> Patients { get; set; }
+        public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+
         [HiddenInput(DisplayValue = false)]
-        public int ClinicId { get; set; }
+        public int? ClinicId { get; set; }
         public Clinic Clinic { get; set; }
 
         [Display(Name = "Prefix")]
@@ -32,7 +39,15 @@ namespace PainClinic.Models
         public string LastName { get; set; }
 
         [Display(Name = "Request Received")]
-        public bool RxReceived { get; set; }
+        public bool? RxReceived { get; set; }
+
+        [Display(Name = "Balance")]
+        public double? PatientBalance { get; set; }
+
+        //[ForeignKey("Patient")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int? PatientId { get; set; }
+        //public Patient Patient { get; set; }
 
         [ForeignKey("ApplicationUser")]
         [HiddenInput(DisplayValue = false)]

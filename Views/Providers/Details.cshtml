@@ -1,4 +1,4 @@
-﻿@model PainClinic.Models.Hcp
+﻿@model PainClinic.Models.Provider
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Hcp</h4>
+    <h4>Provider</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -34,25 +34,9 @@
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RxReceived)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RxReceived)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ChooseRole)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChooseRole)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProviderId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

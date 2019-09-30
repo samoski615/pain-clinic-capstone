@@ -1,4 +1,4 @@
-﻿@model PainClinic.Models.Hcp
+﻿@model PainClinic.Models.Provider
 
 @{
     ViewBag.Title = "Edit";
@@ -12,10 +12,10 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Hcp</h4>
+        <h4>Providers</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.ProviderId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Prefix, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -38,24 +38,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RxReceived, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.RxReceived)
-                    @Html.ValidationMessageFor(model => model.RxReceived, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ChooseRole, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.ChooseRole, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ChooseRole, "", new { @class = "text-danger" })
             </div>
         </div>
 

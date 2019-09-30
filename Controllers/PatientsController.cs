@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using PainClinic.Models;
 using PainClinic.Models.ViewModels;
 using Microsoft.AspNet.Identity;
+using AutoMapper;
 
 namespace PainClinic.Controllers
 {
@@ -17,31 +18,33 @@ namespace PainClinic.Controllers
     {
 
         private readonly ApplicationDbContext db = new ApplicationDbContext();
-        public PatientRegistrationViewModel viewModel { get; set; }
+        public PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
 
         // GET: Patients
         public ActionResult Index()
         {
-            var currentUserId = User.Identity.GetUserId();
-            PatientRegistrationViewModel patient = new PatientRegistrationViewModel();
-            patient.Patient = db.Patients.Include(p => p.Addresses).Where(p => p.ApplicationId == currentUserId).First();
-                                              
-            return View(patient.Patient);
+           
+            return View();
         }
 
         // GET: Patients/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient patient = await db.Patients.FindAsync(id);
-            if (patient == null)
+            var currentUserId = User.Identity.GetUserId();
+            PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
+            viewModel.Patient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
+
+            //.Include(p => p.Addresses.StreetAddress)
+            //.Include(p => p.Addresses.City)
+            //.Include(p => p.Addresses.State)
+            //.Include(p => p.Addresses.Zipcode)
+
+            if (viewModel.Patient == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            
+            return View(viewModel); //determine what to show in the view aka "viewModel....."
         }
 
         // GET: Patients/Create
@@ -63,28 +66,35 @@ namespace PainClinic.Controllers
                 viewModel.Patient.ApplicationId = currentUserId;
                 var Patient = viewModel.Patient;
                 var Address = viewModel.Address;
-                db.Patients.Add(Patient);
                 db.Addresses.Add(Address);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                Patient.AddressesId = db.Addresses.Select(a => a.AddressesId).FirstOrDefault();
+                db.Patients.Add(Patient);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Details");
             }
 
             return View(viewModel);
         }
 
         // GET: Patients/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             }
-            Patient patient = await db.Patients.FindAsync(id);
-            if (patient == null)
+            //var currentUserId = User.Identity.GetUserId();
+            PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
+            viewModel.Patient = db.Patients.Include(p => p.Addresses).Where(p => p.PatientId == id).FirstOrDefault();
+
+            if (viewModel.Patient == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(viewModel);
         }
 
         // POST: Patients/Edit/5
@@ -92,42 +102,52 @@ namespace PainClinic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "PatientId,FirstName,LastName,StreetAddress,City,State,Zipcode,AddressesId,ApplicationId,DailyLogId,RxReceived")] Patient patient)
+        public async Task<ActionResult> Edit(PatientRegistrationViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(patient).State = EntityState.Modified;
+                //db.Entry(viewModel).State = EntityState.Modified;
+                //db.Entry(viewModel.Patient.Addresses).State = EntityState.Modified;
+                //db.Entry(viewModel.Patients).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
+                //return RedirectToAction("Index");
+
+                var Patient = viewModel.Patient;
+                var Address = viewModel.Address;
+                db.Addresses.Add(Address);
+                db.Patients.Add(Patient);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
+
             }
-            return View(patient);
+            return View(viewModel);
         }
 
         // GET: Patients/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient patient = await db.Patients.FindAsync(id);
-            if (patient == null)
-            {
-                return HttpNotFound();
-            }
-            return View(patient);
-        }
+        //public async Task<ActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    PatientRegistrationViewModel patient = await viewModel.Patients.Find(id);
+        //    if (patient == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(patient);
+        //}
 
         // POST: Patients/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Patient patient = await db.Patients.FindAsync(id);
-            db.Patients.Remove(patient);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> DeleteConfirmed(int id)
+        //{
+        //    Patient patient = await db.Patients.FindAsync(id);
+        //    db.Patients.Remove(patient);
+        //    await db.SaveChangesAsync();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

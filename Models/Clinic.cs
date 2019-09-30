@@ -10,6 +10,12 @@ namespace PainClinic.Models
 {
     public class Clinic
     {
+        public Clinic()
+        {
+            this.ClinicDirectories = new HashSet<ClinicDirectory>();
+            this.Providers = new HashSet<Provider>();
+        }
+
         [Key]
         [HiddenInput(DisplayValue = false)]
         public int ClinicId { get; set; }
@@ -21,6 +27,9 @@ namespace PainClinic.Models
 
         [Display(Name = "Clinic Name")]
         public string ClinicName { get; set; }
+
+        public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        public virtual ICollection<Provider> Providers { get; set; }
 
         //[ForeignKey("Provider")]
         //[HiddenInput(DisplayValue = false)]
