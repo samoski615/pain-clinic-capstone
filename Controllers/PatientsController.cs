@@ -33,7 +33,8 @@ namespace PainClinic.Controllers
             var currentUserId = User.Identity.GetUserId();
             PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
             viewModel.Patient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
-
+            viewModel.DailyPainJournal = db.Addresses.Where(a => a.AddressesId == viewModel.Patient.AddressesId).FirstOrDefault();
+        
             //.Include(p => p.Addresses.StreetAddress)
             //.Include(p => p.Addresses.City)
             //.Include(p => p.Addresses.State)
@@ -44,7 +45,7 @@ namespace PainClinic.Controllers
                 return HttpNotFound();
             }
 
-            return View(viewModel); //determine what to show in the view aka "viewModel....."
+            return View(viewModel); 
         }
 
         // GET: Patients/Create
@@ -65,7 +66,7 @@ namespace PainClinic.Controllers
                 var currentUserId = User.Identity.GetUserId();
                 viewModel.Patient.ApplicationId = currentUserId;
                 var Patient = viewModel.Patient;
-                var Address = viewModel.Address;
+                var Address = viewModel.DailyPainJournal;
                 db.Addresses.Add(Address);
                 await db.SaveChangesAsync();
                 Patient.AddressesId = db.Addresses.Select(a => a.AddressesId).FirstOrDefault();
@@ -111,7 +112,7 @@ namespace PainClinic.Controllers
 
 
             var Patient = viewModel.Patient.PatientId;
-            _ = viewModel.Address.AddressesId;
+            _ = viewModel.DailyPainJournal.AddressesId;
             db.Entry(viewModel).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction("Details");
@@ -143,7 +144,7 @@ namespace PainClinic.Controllers
             Patient patient = await db.Patients.FindAsync(id);
 
             var Patient = viewModel.Patient;
-            var Address = viewModel.Address;
+            var Address = viewModel.DailyPainJournal;
 
             db.Patients.Remove(Patient);
             db.Addresses.Remove(Address);

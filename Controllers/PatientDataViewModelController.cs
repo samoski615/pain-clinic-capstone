@@ -22,9 +22,21 @@ namespace PainClinic.Controllers
         }
 
         // GET: PatientDataViewModel/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
-            return View();
+            var currentUserId = User.Identity.GetUserId();
+            PatientDataViewModel viewModel = new PatientDataViewModel();
+            viewModel.Patient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
+            viewModel.DailyPainJournal = db.DailyPainJournals.Where(a => a.DailyPainJournalId == viewModel.Patient.PatientId).FirstOrDefault();
+
+
+
+            if (viewModel.Patient == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(viewModel); 
         }
 
         // GET: PatientDataViewModel/Create
@@ -56,7 +68,7 @@ namespace PainClinic.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Details");
+            return RedirectToAction("Details");
         }
 
         //GET: PatientDataViewModel/Edit/5

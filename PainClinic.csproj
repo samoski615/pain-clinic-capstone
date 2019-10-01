@@ -194,6 +194,14 @@
     <Compile Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.Designer.cs">
       <DependentUpon>201910011715578_addedPatientsFKtoDailyPainJournal1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.cs" />
+    <Compile Include="Migrations\201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.Designer.cs">
+      <DependentUpon>201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910011910096_addedaPatientFKtoAddressesTable.cs" />
+    <Compile Include="Migrations\201910011910096_addedaPatientFKtoAddressesTable.Designer.cs">
+      <DependentUpon>201910011910096_addedaPatientFKtoAddressesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicDirectory.cs" />
     <Compile Include="Global.asax.cs">
@@ -284,7 +292,6 @@
     <Content Include="Views\Providers\Edit.cshtml" />
     <Content Include="Views\Providers\Index.cshtml" />
     <Content Include="Views\Patients\Profile.cshtml" />
-    <Content Include="Views\Patients\DailyJournal.cshtml" />
     <Content Include="Views\PatientDataViewModel\CreateDailyLog.cshtml" />
     <Content Include="Views\PatientDataViewModel\Details.cshtml" />
   </ItemGroup>
@@ -316,6 +323,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.resx">
       <DependentUpon>201910011715578_addedPatientsFKtoDailyPainJournal1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.resx">
+      <DependentUpon>201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910011910096_addedaPatientFKtoAddressesTable.resx">
+      <DependentUpon>201910011910096_addedaPatientFKtoAddressesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -30,8 +30,13 @@ namespace PainClinic.Models
         [Required]
         public string LastName { get; set; }
 
-        [Display(Name = "Request Received")]
-        public bool? RxReceived { get; set; }
+        [Display(Name = "Prescription Requested")]
+        [HiddenInput(DisplayValue = false)]
+        public bool? RxRequested { get; set; }
+
+        [Display(Name = "Prescription Filled")]
+        [HiddenInput(DisplayValue = false)]
+        public bool? RxFilled { get; set; }
 
         [Display(Name = "Balance")]
         public double? PatientBalance { get; set; }
