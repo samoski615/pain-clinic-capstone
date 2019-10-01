@@ -33,7 +33,7 @@ namespace PainClinic.Controllers
             var currentUserId = User.Identity.GetUserId();
             PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
             viewModel.Patient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
-            viewModel.DailyPainJournal = db.Addresses.Where(a => a.AddressesId == viewModel.Patient.AddressesId).FirstOrDefault();
+            viewModel.Address = db.Addresses.Where(a => a.AddressesId == viewModel.Patient.AddressesId).FirstOrDefault();
         
             //.Include(p => p.Addresses.StreetAddress)
             //.Include(p => p.Addresses.City)
@@ -66,7 +66,7 @@ namespace PainClinic.Controllers
                 var currentUserId = User.Identity.GetUserId();
                 viewModel.Patient.ApplicationId = currentUserId;
                 var Patient = viewModel.Patient;
-                var Address = viewModel.DailyPainJournal;
+                var Address = viewModel.Address;
                 db.Addresses.Add(Address);
                 await db.SaveChangesAsync();
                 Patient.AddressesId = db.Addresses.Select(a => a.AddressesId).FirstOrDefault();
@@ -112,7 +112,7 @@ namespace PainClinic.Controllers
 
 
             var Patient = viewModel.Patient.PatientId;
-            _ = viewModel.DailyPainJournal.AddressesId;
+            _ = viewModel.Address.AddressesId;
             db.Entry(viewModel).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction("Details");
@@ -144,7 +144,7 @@ namespace PainClinic.Controllers
             Patient patient = await db.Patients.FindAsync(id);
 
             var Patient = viewModel.Patient;
-            var Address = viewModel.DailyPainJournal;
+            var Address = viewModel.Address;
 
             db.Patients.Remove(Patient);
             db.Addresses.Remove(Address);
@@ -159,6 +159,20 @@ namespace PainClinic.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public async Task<ActionResult> PatientDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Patient patient = await db.Patients.FindAsync(id);
+            if (patient == null)
+            {
+                return HttpNotFound();
+            }
+            return View(patient);
         }
     }
 }

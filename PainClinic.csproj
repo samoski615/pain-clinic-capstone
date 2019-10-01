@@ -291,9 +291,9 @@
     <Content Include="Views\Providers\Details.cshtml" />
     <Content Include="Views\Providers\Edit.cshtml" />
     <Content Include="Views\Providers\Index.cshtml" />
-    <Content Include="Views\Patients\Profile.cshtml" />
     <Content Include="Views\PatientDataViewModel\CreateDailyLog.cshtml" />
     <Content Include="Views\PatientDataViewModel\Details.cshtml" />
+    <Content Include="Views\Patients\PatientDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

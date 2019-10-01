@@ -1,19 +1,17 @@
-﻿@model IEnumerable<PainClinic.Models.Provider>
+﻿@model IEnumerable<PainClinic.Models.Patient>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List of Patients</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Prefix)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -26,17 +24,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Prefix)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProviderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProviderId })
+            @Html.ActionLink("Daily Pain Logs", "PatientDetails", "Patients", new { id = item.PatientId }, null) |
+            @Html.ActionLink("Prescription Request", "PrescriptionRequest", new { id=item.PatientId })
         </td>
     </tr>
 }

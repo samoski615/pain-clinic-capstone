@@ -1,4 +1,4 @@
-﻿@model PainClinic.Models.ViewModels.PatientRegistrationViewModel
+﻿@model PainClinic.Models.Patient
 
 @{
     ViewBag.Title = "Details";
@@ -11,22 +11,22 @@
     <hr />
     <dl class="form-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Patient.FirstName)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Patient.FirstName)
+            @Html.DisplayFor(model => model.FirstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Patient.LastName)
+            @Html.DisplayNameFor(model => model.LastName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Patient.LastName)
+            @Html.DisplayFor(model => model.LastName)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Address.StreetAddress)
         </dt>
 
@@ -52,15 +52,15 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.Address.Zipcode)
-        </dt>
+        </dt>*@
 
-        <dd>
+        @*<dd>
             @Html.DisplayFor(model => model.Address.Zipcode)
-        </dd>
+        </dd>*@
     </dl>
     
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Patient.PatientId }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PatientId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>

@@ -10,7 +10,7 @@ namespace PainClinic.Models.ViewModels
         //ViewModel for maintaining patient records
 
         public Patient Patient { get; set; }
-        public Addresses DailyPainJournal { get; set; }
+        public Addresses Address { get; set; }
         public List<Patient> Patients { get; set; }
         public List<Addresses> Addresses { get; set; }
 
