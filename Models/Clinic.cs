@@ -10,18 +10,12 @@ namespace PainClinic.Models
 {
     public class Clinic
     {
-        public Clinic()
-        {
-            this.ClinicDirectories = new HashSet<ClinicDirectory>();
-            this.Providers = new HashSet<Provider>();
-        }
-
         [Key]
         [HiddenInput(DisplayValue = false)]
         public int ClinicId { get; set; }
 
-        [ForeignKey("Addresses")]
-        [HiddenInput(DisplayValue = false)]
+        //[ForeignKey("Addresses")]
+        //[HiddenInput(DisplayValue = false)]
         public int? AddressesId { get; set; }
         public Addresses Addresses { get; set; }
 
@@ -29,7 +23,7 @@ namespace PainClinic.Models
         public string ClinicName { get; set; }
 
         public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
-        public virtual ICollection<Provider> Providers { get; set; }
+
 
         //[ForeignKey("Provider")]
         //[HiddenInput(DisplayValue = false)]
@@ -41,12 +35,6 @@ namespace PainClinic.Models
         //public int PatientId { get; set; }
         //public Patient Patient { get; set; }
 
-        //public Clinic()
-        //{
-        //    this.Name = "Placeholder Until I Come Up With A Good Name";
-        //    this.Address = "959 W Mayfair Rd";
-        //    this.City = "Milwaukee";
-        //    this.State = "WI";
-        //    this.Zipcode = "53226";
+        //public virtual ICollection<Provider> Providers { get; set; }
     }
 }

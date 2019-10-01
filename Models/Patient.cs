@@ -10,20 +10,15 @@ namespace PainClinic.Models
 {
     public class Patient
     {
-        public Patient()
-        {
-            this.ClinicDirectories = new HashSet<ClinicDirectory>();
-            this.DailyLogs = new HashSet<DailyLog>();
-        }
-
+       
         [Key]
         [HiddenInput(DisplayValue = false)]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PatientId { get; set; }
 
-        //public virtual ICollection<Provider> Providers { get; set; }
-        public virtual ICollection<DailyLog> DailyLogs { get; set; }
+        public virtual ICollection<DailyPainJournal> DailyLogs { get; set; }
         public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        //public virtual ICollection<Addresses> Addresses { get; set; }
 
         [Display(Name = "First Name")]
         [Required]
@@ -40,15 +35,15 @@ namespace PainClinic.Models
         [Display(Name = "Balance")]
         public double? PatientBalance { get; set; }
 
-        [ForeignKey("Addresses")]
-        [HiddenInput(DisplayValue = false)]
-        public int? AddressesId { get; set; }
-        public Addresses Addresses { get; set; }
-
         [ForeignKey("ApplicationUser")]
         [HiddenInput(DisplayValue = false)]
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        //[ForeignKey("Addresses")]
+        //[HiddenInput(DisplayValue = false)]
+        public int? AddressesId { get; set; }
+        public Addresses Addresses { get; set; }
 
         //[ForeignKey("Provider")]
         //[InverseProperty("Provider")]
@@ -67,6 +62,10 @@ namespace PainClinic.Models
         //[HiddenInput(DisplayValue = false)]
         //public int? DailyLog { get; set; }
         //public DailyLog DailyLogs { get; set; }
+
+
+        //public virtual ICollection<Provider> Providers { get; set; }
+
     }
 
 }

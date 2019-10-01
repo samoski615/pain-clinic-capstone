@@ -10,12 +10,6 @@ namespace PainClinic.Models
 {
     public class Addresses
     {
-        public Addresses()
-        {
-            this.Clinics = new HashSet<Clinic>();
-            this.Patients = new HashSet<Patient>();
-        }
-
         [Key]
         [HiddenInput(DisplayValue = false)]
         public int AddressesId { get; set; }
@@ -31,6 +25,9 @@ namespace PainClinic.Models
 
         [Display(Name = "Zipcode")]
         public string Zipcode { get; set; }
+
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         public virtual ICollection<Patient> Patients { get; set; }
         public virtual ICollection<Clinic>  Clinics { get; set; }

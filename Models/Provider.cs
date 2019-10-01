@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PainClinic.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,22 +11,13 @@ namespace PainClinic.Models
 {
     public class Provider
     {
-        public Provider()
-        {
-            this.ClinicDirectories = new HashSet<ClinicDirectory>();
-        }
-
         [Key]
         [HiddenInput(DisplayValue = false)]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProviderId { get; set; }
 
-        //public virtual ICollection<Patient> Patients { get; set; }
         public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        public int? ClinicId { get; set; }
-        public Clinic Clinic { get; set; }
+        public PatientDataViewModel PatientDataVM { get; set; }
 
         [Display(Name = "Prefix")]
         public string Prefix { get; set; }
@@ -44,14 +36,21 @@ namespace PainClinic.Models
         [Display(Name = "Balance")]
         public double? PatientBalance { get; set; }
 
+        [ForeignKey("ApplicationUser")]
+        [HiddenInput(DisplayValue = false)]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
         //[ForeignKey("Patient")]
         //[HiddenInput(DisplayValue = false)]
         //public int? PatientId { get; set; }
         //public Patient Patient { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        [HiddenInput(DisplayValue = false)]
-        public string ApplicationId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        //[HiddenInput(DisplayValue = false)]
+        //public int? ClinicId { get; set; }
+        //public Clinic Clinic { get; set; }
+
+        //public virtual ICollection<Patient> Patients { get; set; }
+
     }
 }

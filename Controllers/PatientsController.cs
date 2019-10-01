@@ -23,7 +23,7 @@ namespace PainClinic.Controllers
         // GET: Patients
         public ActionResult Index()
         {
-           
+
             return View();
         }
 
@@ -43,7 +43,7 @@ namespace PainClinic.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             return View(viewModel); //determine what to show in the view aka "viewModel....."
         }
 
@@ -80,16 +80,15 @@ namespace PainClinic.Controllers
         // GET: Patients/Edit/5
         public ActionResult Edit(int? id)
         {
-           
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             }
-            //var currentUserId = User.Identity.GetUserId();
+
+
             PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
             viewModel.Patient = db.Patients.Include(p => p.Addresses).Where(p => p.PatientId == id).FirstOrDefault();
-
             if (viewModel.Patient == null)
             {
                 return HttpNotFound();
@@ -104,50 +103,53 @@ namespace PainClinic.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(PatientRegistrationViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                //db.Entry(viewModel).State = EntityState.Modified;
-                //db.Entry(viewModel.Patient.Addresses).State = EntityState.Modified;
-                //db.Entry(viewModel.Patients).State = EntityState.Modified;
-                //await db.SaveChangesAsync();
-                //return RedirectToAction("Index");
+                return View(viewModel);
+            }
 
-                var Patient = viewModel.Patient;
-                var Address = viewModel.Address;
-                db.Addresses.Add(Address);
-                db.Patients.Add(Patient);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Details");
 
+
+            var Patient = viewModel.Patient.PatientId;
+            _ = viewModel.Address.AddressesId;
+            db.Entry(viewModel).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("Details");
+        }
+
+
+        //GET: Patients/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
+            viewModel.Patient = db.Patients.Include(p => p.Addresses).Where(p => p.PatientId == id).FirstOrDefault();
+            if (viewModel.Patient == null)
+            {
+                return HttpNotFound();
             }
             return View(viewModel);
         }
 
-        // GET: Patients/Delete/5
-        //public async Task<ActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    PatientRegistrationViewModel patient = await viewModel.Patients.Find(id);
-        //    if (patient == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(patient);
-        //}
+        //POST: Patients/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int? id)
+        {
+            
+            Patient patient = await db.Patients.FindAsync(id);
 
-        // POST: Patients/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    Patient patient = await db.Patients.FindAsync(id);
-        //    db.Patients.Remove(patient);
-        //    await db.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
+            var Patient = viewModel.Patient;
+            var Address = viewModel.Address;
+
+            db.Patients.Remove(Patient);
+            db.Addresses.Remove(Address);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -159,3 +161,4 @@ namespace PainClinic.Controllers
         }
     }
 }
+

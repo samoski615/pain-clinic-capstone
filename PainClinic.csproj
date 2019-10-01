@@ -182,9 +182,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
-    <Compile Include="Migrations\201909301725043_test.cs" />
-    <Compile Include="Migrations\201909301725043_test.Designer.cs">
-      <DependentUpon>201909301725043_test.cs</DependentUpon>
+    <Compile Include="Migrations\201910011357207_Intial.cs" />
+    <Compile Include="Migrations\201910011357207_Intial.Designer.cs">
+      <DependentUpon>201910011357207_Intial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910011541357_addedPatientsFKtoDailyPainJournal.cs" />
+    <Compile Include="Migrations\201910011541357_addedPatientsFKtoDailyPainJournal.Designer.cs">
+      <DependentUpon>201910011541357_addedPatientsFKtoDailyPainJournal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.cs" />
+    <Compile Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.Designer.cs">
+      <DependentUpon>201910011715578_addedPatientsFKtoDailyPainJournal1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicDirectory.cs" />
@@ -192,10 +200,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Addresses.cs" />
+    <Compile Include="Models\PatientPainData.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
-    <Compile Include="Models\DailyLog.cs" />
+    <Compile Include="Models\DailyPainJournal.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\ViewModels\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ListsViewModel.cs" />
@@ -203,14 +212,7 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\ViewModels\PatientDataViewModel.cs" />
     <Compile Include="Models\ViewModels\PatientRegistrationViewModel.cs" />
-    <Compile Include="PainClinicERD.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PainClinicERD.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Patients.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,14 +226,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="PainClinicERD.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>PainClinicERD.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="PainClinicERD.dbml.layout">
-      <DependentUpon>PainClinicERD.dbml</DependentUpon>
-    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -291,7 +285,8 @@
     <Content Include="Views\Providers\Index.cshtml" />
     <Content Include="Views\Patients\Profile.cshtml" />
     <Content Include="Views\Patients\DailyJournal.cshtml" />
-    <Content Include="Views\PatientDataViewModel\DailyLog.cshtml" />
+    <Content Include="Views\PatientDataViewModel\CreateDailyLog.cshtml" />
+    <Content Include="Views\PatientDataViewModel\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,8 +308,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909301725043_test.resx">
-      <DependentUpon>201909301725043_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910011357207_Intial.resx">
+      <DependentUpon>201910011357207_Intial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910011541357_addedPatientsFKtoDailyPainJournal.resx">
+      <DependentUpon>201910011541357_addedPatientsFKtoDailyPainJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.resx">
+      <DependentUpon>201910011715578_addedPatientsFKtoDailyPainJournal1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

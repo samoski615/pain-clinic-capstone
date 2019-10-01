@@ -8,22 +8,19 @@ using System.Web.Mvc;
 
 namespace PainClinic.Models
 {
-    public class DailyLog
+    public class DailyPainJournal
     {
-        public DailyLog()
-        {
-            this.Patients = new HashSet<Patient>();
-        }
+        //Patient's DailyPainJournal info
 
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public int DailyLogId { get; set; }
+        public int DailyPainJournalId { get; set; }
 
         public virtual ICollection<Patient> Patients { get; set; }
 
         [Display(Name = "Date")]
         [Required(ErrorMessage = "Date is required")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime TodaysDate { get; set; }
 
         [Display(Name = "Pain Scale")] 
@@ -42,8 +39,8 @@ namespace PainClinic.Models
         //[DataType(DataType.Text)]
         public string DailyActivities { get; set; }
 
-        //[InverseProperty("PatientId")]
-        //public int? PatientId { get; set; }
-        //public virtual Patient Patient { get; set; }
+        public int? PatientId { get; set; }
+        public virtual Patient Patient { get; set; }
+
     }
 }
