@@ -20,11 +20,11 @@ namespace PainClinic.Models
         public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
         //public virtual ICollection<Addresses> Addresses { get; set; }
 
-        [Display(Name = "First Name")]
+        //[Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        //[Display(Name = "Last Name")]
         [Required]
         public string LastName { get; set; }
 

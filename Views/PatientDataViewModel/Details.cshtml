@@ -9,73 +9,77 @@
 <div>
     <h4>Patient</h4>
     <hr />
-    <dl class="form-horizontal">
+    <table class="table">
+        @*dl class="form-horizontal">*@
         @Html.HiddenFor(model => model.Patient.PatientId)
-        <dt>
-            @Html.DisplayNameFor(model => model.Patient.FirstName)
-        </dt>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.FirstName)
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Patient.FirstName)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Patient.FirstName)
-        </dd>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.LastName)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Patient.LastName)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.Patient.LastName)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Patient.LastName)
-        </dd>
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.TodaysDate)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DailyPainJournal.TodaysDate)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.DailyPainJournal.TodaysDate)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.DailyPainJournal.TodaysDate)
-        </dd>
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.PainRating)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DailyPainJournal.PainRating)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DailyPainJournal.PainRating)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DailyPainJournal.PainRating)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.PainLocation)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DailyPainJournal.PainLocation)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DailyPainJournal.PainLocation)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.DailyPainJournal.PainLocation)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.AmountOfSleep)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DailyPainJournal.AmountOfSleep)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DailyPainJournal.AmountOfSleep)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.ActivityLevel)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DailyPainJournal.AmountOfSleep)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DailyPainJournal.ActivityLevel)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DailyPainJournal.ActivityLevel)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.DailyActivities)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DailyPainJournal.ActivityLevel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DailyPainJournal.DailyActivities)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DailyPainJournal.DailyActivities)
+            </dd>
+        </tr>
+            @*</dl>*@
+        @*<p>Value Trying to Pass: @Html.Raw(Model.Patient.PatientId)</p>*@
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Patient.PatientId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.DailyPainJournal.DailyActivities)
-        </dd>
-    </dl>
-    @*<p>Value Trying to Pass: @Html.Raw(Model.Patient.PatientId)</p>*@
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Patient.PatientId })
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 </div>

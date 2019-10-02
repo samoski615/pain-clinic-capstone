@@ -17,15 +17,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Patient Home", "Index", "Patients", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Patient Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Profile", "Details", "Patients")</li>
-                    <li>@Html.ActionLink("Daily Journal", "CreateDailyLog", "PatientDataViewModel")</li>
+                    <li>@Html.ActionLink("Daily Journals", "CreateDailyLog", "PatientDataViewModel")</li>
                     <li>@Html.ActionLink("Prescription Requests", "PrescriptionRequests", "TBD")</li>
                     <li>@Html.ActionLink("Messages", "Messages", "TBD")</li>
                 </ul>

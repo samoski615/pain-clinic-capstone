@@ -90,6 +90,7 @@ namespace PainClinic.Controllers
 
             PatientRegistrationViewModel viewModel = new PatientRegistrationViewModel();
             viewModel.Patient = db.Patients.Include(p => p.Addresses).Where(p => p.PatientId == id).FirstOrDefault();
+            viewModel.Address = db.Addresses.Where(a => a.AddressesId == viewModel.Patient.AddressesId).FirstOrDefault();
             if (viewModel.Patient == null)
             {
                 return HttpNotFound();

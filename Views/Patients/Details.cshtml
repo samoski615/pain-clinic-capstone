@@ -7,52 +7,52 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Patient</h4>
+    <h4>Patient Information</h4>
     <hr />
     <dl class="form-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Patient.FirstName)
-        </dt>
-
+        </dt>*@
+         <b>NAME</b>
         <dd>
             @Html.DisplayFor(model => model.Patient.FirstName)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Patient.LastName)
-        </dt>
+        </dt>*@
 
         <dd>
             @Html.DisplayFor(model => model.Patient.LastName)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Address.StreetAddress)
-        </dt>
-
+        </dt>*@
+        <b>ADDRESS</b>
         <dd>
             @Html.DisplayFor(model => model.Address.StreetAddress)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Address.City)
-        </dt>
+        </dt>*@
 
         <dd>
             @Html.DisplayFor(model => model.Address.City)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Address.State)
-        </dt>
+        </dt>*@
 
         <dd>
             @Html.DisplayFor(model => model.Address.State)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Address.Zipcode)
-        </dt>
+        </dt>*@
 
         <dd>
             @Html.DisplayFor(model => model.Address.Zipcode)
@@ -60,7 +60,9 @@
     </dl>
     
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Patient.PatientId }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Edit", "Edit", "Patients", new { id = Model.Patient.PatientId }) |
+        @Html.ActionLink("Directions", "GetClinicDirections", "PatientAcctMgmtViewModel", new { id = Model.Patient.PatientId }) |
+        @Html.ActionLink("Pay Balance", "PayBalance", "TBD", new { id = Model.Patient.PatientId }) |
+        @Html.ActionLink("Back to List", "Index", "Home")
     </p>
 </div>
