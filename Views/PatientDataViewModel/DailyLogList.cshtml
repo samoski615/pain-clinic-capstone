@@ -3,28 +3,33 @@
     ViewBag.Title = "Daily Log List";
 }
 
-<center>
-    <h1>Placeholder Title</h1>
+    <center>
+        <h1>Placeholder Title</h1>
         <h2>Daily Log List</h2>
-    <hr/>
-    <table border="1">
-        <tr>
-            <th>Pain Rating</th>
-            <th>Pain Location</th>
-            <th>Amount of Sleep</th>
-            <th>Activity Level</th>
-            <th>Date</th>
-        </tr>
-
-        @foreach (var item in ViewBag.dailyLogList)
-        {
+        <hr />
+        <table border="1">
             <tr>
-                <td>@item.PainRating</td>
-                <td>@item.PainLocation</td>
-                <td>@item.AmountOfSleep</td>
-                <td>@item.ActivityLevel</td>
-                <td>@item.SearchDate</td>
+                <th>Pain Rating</th>
+                <th>Pain Location</th>
+                <th>Amount of Sleep</th>
+                <th>Activity Level</th>
+                <th>Date</th>
             </tr>
-        }
-    </table>
-</center>
+
+            @foreach (var item in ViewBag.dailyLogList)
+            {
+                <tr>
+                    <td>@item.PainRating</td>
+                    <td>@item.PainLocation</td>
+                    <td>@item.AmountOfSleep</td>
+                    <td>@item.ActivityLevel</td>
+                    <td>@item.SearchDate</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PatientId }) |
+                        @Html.ActionLink("Create New Log", "CreateDailyLog", new { id = item.PatientId }) 
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.PatientId })*@
+                    </td>
+                </tr>
+            }
+        </table>
+    </center>

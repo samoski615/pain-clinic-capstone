@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,8 +44,18 @@ namespace PainClinic.Controllers
         }
 
         // GET: PatientDataViewModel/Create
-        public ActionResult CreateDailyLog()
+        public ActionResult CreateDailyLog(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PatientDataViewModel dataViewModel = db.PatientDataViewModels.Find(id);
+            if (dataViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
             var painRatingList = new List<string>() { "1", "2", "3", "4", "5" };
             ViewBag.painRatingList = painRatingList;
 
@@ -79,7 +91,7 @@ namespace PainClinic.Controllers
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("DailyLogList");     /////////REDIRECT TO A LIST OF DAILY LOGS OF THIS PATIENT -- fix view
+            return RedirectToAction("DailyLogList");     
         }
 
         //GET: PatientDataViewModel/Edit/5
@@ -90,18 +102,18 @@ namespace PainClinic.Controllers
 
         // POST: PatientDataViewModel/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int? id)
         {
-            try
+            if (id == null)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            catch
+            PatientDataViewModel dataViewModel =  await db.PatientDataViewModels.FindAsync(id);
+            if (dataViewModel == null)
             {
-                return View();
+                return HttpNotFound();
             }
+            return View(dataViewModel);
         }
 
         // GET: PatientDataViewModel/Delete/5
@@ -144,9 +156,6 @@ namespace PainClinic.Controllers
                                                                                    
 
             ViewBag.dailyLogList = journals;
-
-            //viewModel.GetDailyLogs = db.DailyPainJournals.Where(a => a.DailyPainJournalId == viewModel.Patient.PatientId).ToList();
-
             return View(journals);
         }
     }
