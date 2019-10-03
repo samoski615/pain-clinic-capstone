@@ -64,8 +64,8 @@ namespace PainClinic.Models
         //[ForeignKey("DailyLog")]
         //[InverseProperty("DailyLog")]
         //[HiddenInput(DisplayValue = false)]
-        //public int? DailyLog { get; set; }
-        //public DailyLog DailyLogs { get; set; }
+        public int? DailyPainJournalId { get; set; }
+        public DailyPainJournal DailyPainJournals { get; set; }
 
 
         //public virtual ICollection<Provider> Providers { get; set; }

@@ -1,0 +1,68 @@
+﻿
+@model PainClinic.Models.ViewModels.PatientDataViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DailyPainJournal.SearchDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DailyPainJournal.PainRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DailyPainJournal.PainLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DailyPainJournal.AmountOfSleep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DailyPainJournal.ActivityLevel)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.GetDailyLogs)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PainRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PainLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountOfSleep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityLevel)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PatientId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PatientId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PatientId })
+            </td>*@
+        </tr>
+    }
+
+</table>

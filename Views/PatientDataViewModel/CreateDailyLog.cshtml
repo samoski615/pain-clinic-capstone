@@ -10,17 +10,18 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.DailyPainJournal.TodaysDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DailyPainJournal.SearchDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DailyPainJournal.TodaysDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DailyPainJournal.TodaysDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DailyPainJournal.SearchDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DailyPainJournal.SearchDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DailyPainJournal.PainRating, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DailyPainJournal.PainRating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.DailyPainJournal.PainRating, new SelectList(ViewBag.painRatingList), "Rate your pain: ", htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.DailyPainJournal.PainRating, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.DailyPainJournal.PainRating, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,7 +29,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DailyPainJournal.PainLocation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DailyPainJournal.PainLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.DailyPainJournal.PainLocation, new SelectList(ViewBag.painLocationList), "Where is your pain located?", htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.DailyPainJournal.PainLocation, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.DailyPainJournal.PainLocation, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +38,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DailyPainJournal.AmountOfSleep, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DailyPainJournal.AmountOfSleep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.DailyPainJournal.AmountOfSleep, new SelectList(ViewBag.amountOfSleepList), "Hours of sleep last night: ", htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.DailyPainJournal.AmountOfSleep, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.DailyPainJournal.AmountOfSleep, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,18 +47,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DailyPainJournal.ActivityLevel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DailyPainJournal.ActivityLevel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.DailyPainJournal.ActivityLevel, new SelectList(ViewBag.activityLevelList), "Rate your activity level: ", htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.DailyPainJournal.ActivityLevel, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.DailyPainJournal.ActivityLevel, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DailyPainJournal.DailyActivities, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DailyPainJournal.DailyActivities, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DailyPainJournal.DailyActivities, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

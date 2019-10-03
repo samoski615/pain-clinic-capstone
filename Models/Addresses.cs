@@ -17,16 +17,18 @@ namespace PainClinic.Models
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
-        //[Display(Name = "City")]
+        [Display(Name = "City")]
         public string City { get; set; }
 
-        //[Display(Name = "State")]
-        public string State { get; set; }
+        [Display(Name = "State Abbreviation")]
+        public SelectList State { get; set; }
 
         [Display(Name = "Zipcode")]
         public string Zipcode { get; set; }
 
+        [NotMapped]
         public double Latitude { get; set; }
+        [NotMapped ]
         public double Longitude { get; set; }
 
         public virtual ICollection<Patient> Patients { get; set; }
@@ -34,5 +36,8 @@ namespace PainClinic.Models
 
         public int? PatientId { get; set; }
         public virtual Patient Patient { get; set; }
+
+        //public int? StatesDictionaryId { get; set; }
+        //public virtual StatesDictionary StatesDictionary { get; set; }
     }
 }

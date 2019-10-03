@@ -55,7 +55,7 @@ namespace PainClinic.Controllers
         //        viewModel.Address.Longitude = location.Results[0].Geometry.Location.Lng;
         //        db.Entry(viewModel).State = EntityState.Added;
         //        await db.SaveChangesAsync();
-        //        return View("GoogleMapsAPI");
+        //        return RedirectToAction("GoogleMapsAPI");   //method to put here
         //    }
         //    return View(viewModel);
         //}
@@ -74,7 +74,10 @@ namespace PainClinic.Controllers
         }
 
 
-
+        //public async Task<IActionResult> PayBalance()
+        //{
+        //    return RedirectToActionAsync("Details", "Patients");
+        //}
 
 
 

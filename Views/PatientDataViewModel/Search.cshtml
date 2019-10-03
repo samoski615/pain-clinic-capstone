@@ -1,11 +1,14 @@
 ﻿
-@{ 
-    ViewBag.Title = "Daily Log List";
+@{
+    ViewBag.Title = "Search";
 }
+
 
 <center>
     <h1>Placeholder Title</h1>
-        <h2>Daily Log List</h2>
+    <h2>Search Daily Logs</h2>
+    <hr />
+    <input type="text" id="txtsearch" placeholder=" Enter search here...." />
     <hr/>
     <table border="1">
         <tr>
@@ -18,13 +21,13 @@
 
         @foreach (var item in ViewBag.dailyLogList)
         {
-            <tr>
-                <td>@item.PainRating</td>
-                <td>@item.PainLocation</td>
-                <td>@item.AmountOfSleep</td>
-                <td>@item.ActivityLevel</td>
-                <td>@item.SearchDate</td>
-            </tr>
+    <tr>
+        <td>@item.PainRating</td>
+        <td>@item.PainLocation</td>
+        <td>@item.AmountOfSleep</td>
+        <td>@item.ActivityLevel</td>
+        <td>@item.SearchDate</td>
+    </tr>
         }
     </table>
 </center>

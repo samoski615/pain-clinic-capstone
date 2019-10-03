@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using PainClinic.Models;
 using Microsoft.AspNet.Identity;
 using PainClinic.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PainClinic.Controllers
 {
@@ -126,6 +127,6 @@ namespace PainClinic.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }    
     }
 }

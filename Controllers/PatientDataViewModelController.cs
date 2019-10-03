@@ -44,11 +44,24 @@ namespace PainClinic.Controllers
         // GET: PatientDataViewModel/Create
         public ActionResult CreateDailyLog()
         {
+            var painRatingList = new List<string>() { "1", "2", "3", "4", "5" };
+            ViewBag.painRatingList = painRatingList;
+
+            var painLocationList = new List<string>() { "Upper Back", "Lower Back", "Neck", "Head", "Legs", "Arms", "Shoulders" };
+            ViewBag.painLocationList = painLocationList;
+
+            var amountOfSleepList = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8 or more" };
+            ViewBag.amountOfSleepList = amountOfSleepList;
+
+            var activityLevelList = new List<string>() { "Sedentary", "Moderate", "High" };
+            ViewBag.activityLevelList = activityLevelList;
+
             return View();
+
         }
 
         //POST: PatientDataViewModel/Create
-       [HttpPost]
+        [HttpPost]
         public ActionResult CreateDailyLog(PatientDataViewModel dataViewModel)
         {
             //method for creating a new daily pain log
@@ -57,22 +70,16 @@ namespace PainClinic.Controllers
             {
                 string currentUserId = User.Identity.GetUserId();
                 Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
-                currentPatient.DailyLogs = dataViewModel.GetDailyLogs;
-                //db.Entry(currentPatient).State = EntityState.Modified;
+                dataViewModel.DailyPainJournal.PatientId = currentPatient.PatientId;
                 db.Entry(dataViewModel).State = EntityState.Added;
-                db.SaveChanges();
-
-                //currentPatient.PatientId = dataViewModel.Patient.PatientId; //figure out why this is erroring and not adding PatientId to dataModelView
-                db.Entry(dataViewModel).State = EntityState.Modified;
-                db.SaveChanges();
-
+                db.SaveChanges();              
             }
 
             else if (!ModelState.IsValid)
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("Details");
+            return RedirectToAction("Details");     /////////REDIRECT TO A LIST OF DAILY LOGS OF THIS PATIENT -- fix view
         }
 
         //GET: PatientDataViewModel/Edit/5
@@ -124,10 +131,22 @@ namespace PainClinic.Controllers
         {
             //gets a list of a patient's daily logs
 
-            var currentUserId = User.Identity.GetUserId();
+            //1. user clicks 'Daily Journals' in navbar
+            //2. get current user by User.Identity.GetUserId()
+            //3. query for match by ApplicationId
+            //4. if currentUser == patient I want, then include a list of daily pain logs of currently logged in patient in query, return a list
+
             PatientDataViewModel viewModel = new PatientDataViewModel();
-            viewModel.Patient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
-            viewModel.DailyPainJournal = db.DailyPainJournals.Where(a => a.DailyPainJournalId == viewModel.Patient.PatientId).FirstOrDefault();
+            string currentUserId = User.Identity.GetUserId();
+            Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
+
+            List<DailyPainJournal> journals = db.DailyPainJournals.Include(j => currentPatient.PatientId) //error at this line -- no navigation to include currentPatient value
+                                           .Where(j => j.DailyPainJournalId == currentPatient.DailyPainJournalId)
+                                           .ToList();
+
+            ViewBag.dailyLogList = journals;
+
+            //viewModel.GetDailyLogs = db.DailyPainJournals.Where(a => a.DailyPainJournalId == viewModel.Patient.PatientId).ToList();
 
 
 
@@ -135,7 +154,6 @@ namespace PainClinic.Controllers
             {
                 return HttpNotFound();
             }
-
             return View(viewModel);
         }
     }

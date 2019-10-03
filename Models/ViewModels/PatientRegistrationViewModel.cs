@@ -14,5 +14,7 @@ namespace PainClinic.Models.ViewModels
         public List<Patient> Patients { get; set; }
         public List<Addresses> Addresses { get; set; }
 
+        //public StatesDictionary States { get; set; }  
+
     }
 }
