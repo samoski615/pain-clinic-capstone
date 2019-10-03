@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+    <div class="form-control">
+        <canvas id="myChart"></canvas>
+        <center>
+            <h1>Placeholder Title</h1>
+            <h2>Search Daily Logs</h2>
+            <hr />
+            <input type="text" id="txtsearch" placeholder=" Enter search here...." />
+            <hr />
+            <table border="1">
+                <tr>
+                    <th>Pain Rating</th>
+                    @*<th>Pain Location</th>
+                    <th>Amount of Sleep</th>
+                    <th>Activity Level</th>
+                    <th>Date</th>*@
+                </tr>
+
+                @foreach (var item in ViewBag.dailyLogList)
+                {
+                    <tr>
+                        <td>@item.PainRating</td>
+                        @*<td>@item.PainLocation</td>
+                        <td>@item.AmountOfSleep</td>
+                        <td>@item.ActivityLevel</td>
+                        <td>@item.SearchDate</td>*@
+                    </tr>
+                }
+            </table>
+        </center>
+        </div>
+
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+        },
+
+        // Configuration options go here
+        options: {}
+        });
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PainClinic.Models;
 using PainClinic.Models.ViewModels;
 using System;
@@ -95,27 +96,33 @@ namespace PainClinic.Controllers
         }
 
         //GET: PatientDataViewModel/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //public async Task<ActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    PatientDataViewModel dataViewModel = await db.DailyPainJournals.FindAsync(id);
+        //    if (dataViewModel == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(dataViewModel);
+        //}
 
-        // POST: PatientDataViewModel/Edit/5
-        [HttpPost]
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PatientDataViewModel dataViewModel =  await db.PatientDataViewModels.FindAsync(id);
-            if (dataViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dataViewModel);
-        }
-
+        //// POST: PatientDataViewModel/Edit/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Edit(PatientDataViewModel dataViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(dataViewModel).State = EntityState.Modified;
+        //        await db.SaveChangesAsync();
+        //        return RedirectToAction("DailyLogList");
+        //    }
+        //    return View(dataViewModel);
+        //}
         // GET: PatientDataViewModel/Delete/5
         public ActionResult Delete(int id)
         {
@@ -158,5 +165,24 @@ namespace PainClinic.Controllers
             ViewBag.dailyLogList = journals;
             return View(journals);
         }
+        public ActionResult PatientList()
+        {
+            //gets a list of a patient's daily logs
+
+            //1. user clicks 'PatientList' in navbar
+            //2. show list of patients -- eventually make this a list of patients specific to the provider logged in
+
+            _ = new PatientDataViewModel();
+
+
+            var journals = db.DailyPainJournals.ToList();
+
+
+            ViewBag.dailyLogList = journals;
+            return View(journals);
+        }
+       
+
+
     }
 }

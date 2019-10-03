@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PainClinic.Models.ViewModels.PatientDataViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Patients</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Daily Pain Logs", "DailyLogList", "PatientDataViewModel", new { id = item.Patient.PatientId }, null) 
+                @*@Html.ActionLink("Prescription Request", "PrescriptionRequest", new { id = item.Patient.PatientId })*@
+            </td>
+        </tr>
+    }
+
+</table>

@@ -77,16 +77,35 @@ namespace PainClinic.Controllers
         }
 
         [HttpGet]
-        public void SearchByPainLevel(string painLevel, string searchString)
+        public ActionResult SearchByPainLevel(string painLevel, DateTime searchDate, DateTime currentDate, PatientDataViewModel viewModel)
         {
+            //search daily logs of a patient by their pain level score for the past 30 days (ie: from DateTime.now to -=30 DateTime.SearchDate
 
+
+            //get a list of PainRatings
+            viewModel = new PatientDataViewModel();
+            List<string> patientToSearch = db.PatientDataViewModels.Where(j => j.Patient.PatientId == j.DailyPainJournal.PatientId)
+                                                          .Select(j => j.DailyPainJournal.PainRating).ToList();
+
+
+            List<DateTime> dateRange = db.DailyPainJournals.Select(j => j.SearchDate).ToList();
+
+            if (!dateRange.Contains(DateTime.Today))
+            {
+
+            }
+
+
+
+
+            return View();
         }
 
-        [HttpPost]
-        public void SearchByPainLevel(string painLevel, string searchString, PatientDataViewModel viewModel)
-        {
+        //[HttpPost]
+        //public ActionResult SearchByPainLevel(string painLevel, string searchString, PatientDataViewModel viewModel)
+        //{
 
-        }
+        //}
 
 
 

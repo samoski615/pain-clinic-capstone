@@ -405,11 +405,12 @@
     <Content Include="Views\PatientAcctMgmtViewModel\GoogleMapsAPI.cshtml" />
     <Content Include="Views\PatientDataViewModel\LogDetails.cshtml" />
     <Content Include="Views\PatientDataViewModel\DailyLogList.cshtml" />
-    <Content Include="Views\PatientDataViewModel\Search.cshtml" />
+    <Content Include="Views\PatientDataViewModel\SearchByPainLevel.cshtml" />
+    <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
+    <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
