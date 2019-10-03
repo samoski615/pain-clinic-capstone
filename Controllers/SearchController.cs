@@ -85,14 +85,15 @@ namespace PainClinic.Controllers
             //get a list of PainRatings
             viewModel = new PatientDataViewModel();
             List<string> patientToSearch = db.PatientDataViewModels.Where(j => j.Patient.PatientId == j.DailyPainJournal.PatientId)
-                                                          .Select(j => j.DailyPainJournal.PainRating).ToList();
-
-
+                                                          .Select(j => j.DailyPainJournal.PainRating).ToList();  //list of pain journals of patient
+            DateTime date = Convert.ToDateTime(30);
+            currentDate = DateTime.Today;
             List<DateTime> dateRange = db.DailyPainJournals.Select(j => j.SearchDate).ToList();
-
-            if (!dateRange.Contains(DateTime.Today))
+            searchDate = db.DailyPainJournals.Where(j => dateRange <= currentDate > date);
+            if (currentDate > dateRange )
             {
-
+               
+                return View(patientToSearch);
             }
 
 
