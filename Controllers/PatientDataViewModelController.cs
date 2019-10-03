@@ -79,7 +79,7 @@ namespace PainClinic.Controllers
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("Details");     /////////REDIRECT TO A LIST OF DAILY LOGS OF THIS PATIENT -- fix view
+            return RedirectToAction("DailyLogList");     /////////REDIRECT TO A LIST OF DAILY LOGS OF THIS PATIENT -- fix view
         }
 
         //GET: PatientDataViewModel/Edit/5
@@ -140,21 +140,14 @@ namespace PainClinic.Controllers
             string currentUserId = User.Identity.GetUserId();
             Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
 
-            List<DailyPainJournal> journals = db.DailyPainJournals.Include(j => currentPatient.PatientId) //error at this line -- no navigation to include currentPatient value
-                                           .Where(j => j.DailyPainJournalId == currentPatient.DailyPainJournalId)
-                                           .ToList();
+            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).ToList();
+                                                                                   
 
             ViewBag.dailyLogList = journals;
 
             //viewModel.GetDailyLogs = db.DailyPainJournals.Where(a => a.DailyPainJournalId == viewModel.Patient.PatientId).ToList();
 
-
-
-            if (viewModel.Patient == null)
-            {
-                return HttpNotFound();
-            }
-            return View(viewModel);
+            return View(journals);
         }
     }
 }

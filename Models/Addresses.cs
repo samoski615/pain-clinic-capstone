@@ -21,7 +21,7 @@ namespace PainClinic.Models
         public string City { get; set; }
 
         [Display(Name = "State Abbreviation")]
-        public SelectList State { get; set; }
+        public string State { get; set; }
 
         [Display(Name = "Zipcode")]
         public string Zipcode { get; set; }

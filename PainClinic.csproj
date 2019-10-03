@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201910030658526_addeddropdownlistforToCreateDailyLog.Designer.cs">
       <DependentUpon>201910030658526_addeddropdownlistforToCreateDailyLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910031646144_updatedAddressesProperty.cs" />
+    <Compile Include="Migrations\201910031646144_updatedAddressesProperty.Designer.cs">
+      <DependentUpon>201910031646144_updatedAddressesProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicDirectory.cs" />
     <Compile Include="Global.asax.cs">
@@ -486,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910030658526_addeddropdownlistforToCreateDailyLog.resx">
       <DependentUpon>201910030658526_addeddropdownlistforToCreateDailyLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031646144_updatedAddressesProperty.resx">
+      <DependentUpon>201910031646144_updatedAddressesProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
