@@ -14,11 +14,11 @@ namespace PainClinic.Models
         [HiddenInput(DisplayValue = false)]
         public int PatientPainDataId { get; set; }
 
-        public int DailyPainJournalId { get; set; }
-        public virtual DailyPainJournal DailyPainJournal { get; set; }
+        //public int DailyPainJournalId { get; set; }
+        //public virtual DailyPainJournal DailyPainJournal { get; set; }
 
-        public int PatientId { get; set; }
-        public virtual Patient Patient { get; set; }
+        //public int PatientId { get; set; }
+        //public virtual Patient Patient { get; set; }
 
     }
 }

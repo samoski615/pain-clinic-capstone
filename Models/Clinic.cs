@@ -14,15 +14,15 @@ namespace PainClinic.Models
         [HiddenInput(DisplayValue = false)]
         public int ClinicId { get; set; }
 
-        //[ForeignKey("Addresses")]
-        //[HiddenInput(DisplayValue = false)]
+        [ForeignKey("Addresses")]
+        [HiddenInput(DisplayValue = false)]
         public int? AddressesId { get; set; }
         public Addresses Addresses { get; set; }
 
         [Display(Name = "Clinic Name")]
         public string ClinicName { get; set; }
 
-        public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        // public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
 
 
         //[ForeignKey("Provider")]

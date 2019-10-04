@@ -16,8 +16,8 @@ namespace PainClinic.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PatientId { get; set; }
 
-        public virtual ICollection<DailyPainJournal> DailyLogs { get; set; }
-        public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        //public virtual ICollection<DailyPainJournal> DailyLogs { get; set; }
+        //public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
         //public virtual ICollection<Addresses> Addresses { get; set; }
 
         //[Display(Name = "First Name")]
@@ -44,8 +44,8 @@ namespace PainClinic.Models
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        //[ForeignKey("Addresses")]
-        //[HiddenInput(DisplayValue = false)]
+        [ForeignKey("Addresses")]
+        [HiddenInput(DisplayValue = false)]
         public int? AddressesId { get; set; }
         public Addresses Addresses { get; set; }
 
@@ -64,8 +64,8 @@ namespace PainClinic.Models
         //[ForeignKey("DailyLog")]
         //[InverseProperty("DailyLog")]
         //[HiddenInput(DisplayValue = false)]
-        public int? DailyPainJournalId { get; set; }
-        public DailyPainJournal DailyPainJournals { get; set; }
+        //public int? DailyPainJournalId { get; set; }
+        //public DailyPainJournal DailyPainJournals { get; set; }
 
 
         //public virtual ICollection<Provider> Providers { get; set; }

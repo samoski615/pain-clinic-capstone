@@ -218,93 +218,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Migrations\201910011357207_Intial.cs" />
-    <Compile Include="Migrations\201910011357207_Intial.Designer.cs">
-      <DependentUpon>201910011357207_Intial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011541357_addedPatientsFKtoDailyPainJournal.cs" />
-    <Compile Include="Migrations\201910011541357_addedPatientsFKtoDailyPainJournal.Designer.cs">
-      <DependentUpon>201910011541357_addedPatientsFKtoDailyPainJournal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.cs" />
-    <Compile Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.Designer.cs">
-      <DependentUpon>201910011715578_addedPatientsFKtoDailyPainJournal1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.cs" />
-    <Compile Include="Migrations\201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.Designer.cs">
-      <DependentUpon>201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910011910096_addedaPatientFKtoAddressesTable.cs" />
-    <Compile Include="Migrations\201910011910096_addedaPatientFKtoAddressesTable.Designer.cs">
-      <DependentUpon>201910011910096_addedaPatientFKtoAddressesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910020258014_updatedPatientPropertiesAttributes.cs" />
-    <Compile Include="Migrations\201910020258014_updatedPatientPropertiesAttributes.Designer.cs">
-      <DependentUpon>201910020258014_updatedPatientPropertiesAttributes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910020345117_AddedPatientAcctMgmtViewModel.cs" />
-    <Compile Include="Migrations\201910020345117_AddedPatientAcctMgmtViewModel.Designer.cs">
-      <DependentUpon>201910020345117_AddedPatientAcctMgmtViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021641518_updatedAddressesModelandAddedListofStates.cs" />
-    <Compile Include="Migrations\201910021641518_updatedAddressesModelandAddedListofStates.Designer.cs">
-      <DependentUpon>201910021641518_updatedAddressesModelandAddedListofStates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021658136_deletedPropertyforDailyActivitiesonDailyPainJournal.cs" />
-    <Compile Include="Migrations\201910021658136_deletedPropertyforDailyActivitiesonDailyPainJournal.Designer.cs">
-      <DependentUpon>201910021658136_deletedPropertyforDailyActivitiesonDailyPainJournal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021819597_AddedAdditionalPropertiestoPatientDataViewModel.cs" />
-    <Compile Include="Migrations\201910021819597_AddedAdditionalPropertiestoPatientDataViewModel.Designer.cs">
-      <DependentUpon>201910021819597_AddedAdditionalPropertiestoPatientDataViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021823138_AddedAdditionalPropertiestoPatientDataViewModel1.cs" />
-    <Compile Include="Migrations\201910021823138_AddedAdditionalPropertiestoPatientDataViewModel1.Designer.cs">
-      <DependentUpon>201910021823138_AddedAdditionalPropertiestoPatientDataViewModel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021847493_test1.cs" />
-    <Compile Include="Migrations\201910021847493_test1.Designer.cs">
-      <DependentUpon>201910021847493_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021850437_test2.cs" />
-    <Compile Include="Migrations\201910021850437_test2.Designer.cs">
-      <DependentUpon>201910021850437_test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021851205_test3.cs" />
-    <Compile Include="Migrations\201910021851205_test3.Designer.cs">
-      <DependentUpon>201910021851205_test3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021902313_test4.cs" />
-    <Compile Include="Migrations\201910021902313_test4.Designer.cs">
-      <DependentUpon>201910021902313_test4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021947304_test5.cs" />
-    <Compile Include="Migrations\201910021947304_test5.Designer.cs">
-      <DependentUpon>201910021947304_test5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910022053487_test6.cs" />
-    <Compile Include="Migrations\201910022053487_test6.Designer.cs">
-      <DependentUpon>201910022053487_test6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910022102041_test7.cs" />
-    <Compile Include="Migrations\201910022102041_test7.Designer.cs">
-      <DependentUpon>201910022102041_test7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910022115275_test8.cs" />
-    <Compile Include="Migrations\201910022115275_test8.Designer.cs">
-      <DependentUpon>201910022115275_test8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910022119248_test9.cs" />
-    <Compile Include="Migrations\201910022119248_test9.Designer.cs">
-      <DependentUpon>201910022119248_test9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910030658526_addeddropdownlistforToCreateDailyLog.cs" />
-    <Compile Include="Migrations\201910030658526_addeddropdownlistforToCreateDailyLog.Designer.cs">
-      <DependentUpon>201910030658526_addeddropdownlistforToCreateDailyLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910031646144_updatedAddressesProperty.cs" />
-    <Compile Include="Migrations\201910031646144_updatedAddressesProperty.Designer.cs">
-      <DependentUpon>201910031646144_updatedAddressesProperty.cs</DependentUpon>
+    <Compile Include="Migrations\201910041451483_initial.cs" />
+    <Compile Include="Migrations\201910041451483_initial.Designer.cs">
+      <DependentUpon>201910041451483_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicDirectory.cs" />
@@ -405,7 +321,7 @@
     <Content Include="Views\PatientAcctMgmtViewModel\GoogleMapsAPI.cshtml" />
     <Content Include="Views\PatientDataViewModel\LogDetails.cshtml" />
     <Content Include="Views\PatientDataViewModel\DailyLogList.cshtml" />
-    <Content Include="Views\PatientDataViewModel\SearchByPainLevel.cshtml" />
+    <Content Include="Views\PatientDataViewModel\SearchByPainRating.cshtml" />
     <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
     <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
   </ItemGroup>
@@ -429,71 +345,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910011357207_Intial.resx">
-      <DependentUpon>201910011357207_Intial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011541357_addedPatientsFKtoDailyPainJournal.resx">
-      <DependentUpon>201910011541357_addedPatientsFKtoDailyPainJournal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011715578_addedPatientsFKtoDailyPainJournal1.resx">
-      <DependentUpon>201910011715578_addedPatientsFKtoDailyPainJournal1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.resx">
-      <DependentUpon>201910011802033_addedPropertiestoPatientsandProvidersforfillingRx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910011910096_addedaPatientFKtoAddressesTable.resx">
-      <DependentUpon>201910011910096_addedaPatientFKtoAddressesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910020258014_updatedPatientPropertiesAttributes.resx">
-      <DependentUpon>201910020258014_updatedPatientPropertiesAttributes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910020345117_AddedPatientAcctMgmtViewModel.resx">
-      <DependentUpon>201910020345117_AddedPatientAcctMgmtViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021641518_updatedAddressesModelandAddedListofStates.resx">
-      <DependentUpon>201910021641518_updatedAddressesModelandAddedListofStates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021658136_deletedPropertyforDailyActivitiesonDailyPainJournal.resx">
-      <DependentUpon>201910021658136_deletedPropertyforDailyActivitiesonDailyPainJournal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021819597_AddedAdditionalPropertiestoPatientDataViewModel.resx">
-      <DependentUpon>201910021819597_AddedAdditionalPropertiestoPatientDataViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021823138_AddedAdditionalPropertiestoPatientDataViewModel1.resx">
-      <DependentUpon>201910021823138_AddedAdditionalPropertiestoPatientDataViewModel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021847493_test1.resx">
-      <DependentUpon>201910021847493_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021850437_test2.resx">
-      <DependentUpon>201910021850437_test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021851205_test3.resx">
-      <DependentUpon>201910021851205_test3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021902313_test4.resx">
-      <DependentUpon>201910021902313_test4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021947304_test5.resx">
-      <DependentUpon>201910021947304_test5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910022053487_test6.resx">
-      <DependentUpon>201910022053487_test6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910022102041_test7.resx">
-      <DependentUpon>201910022102041_test7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910022115275_test8.resx">
-      <DependentUpon>201910022115275_test8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910022119248_test9.resx">
-      <DependentUpon>201910022119248_test9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910030658526_addeddropdownlistforToCreateDailyLog.resx">
-      <DependentUpon>201910030658526_addeddropdownlistforToCreateDailyLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910031646144_updatedAddressesProperty.resx">
-      <DependentUpon>201910031646144_updatedAddressesProperty.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910041451483_initial.resx">
+      <DependentUpon>201910041451483_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

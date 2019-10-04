@@ -31,11 +31,12 @@ namespace PainClinic.Models
         [NotMapped ]
         public double Longitude { get; set; }
 
-        public virtual ICollection<Patient> Patients { get; set; }
-        public virtual ICollection<Clinic>  Clinics { get; set; }
+        //[NotMapped]
+        //public virtual ICollection<Patient> Patients { get; set; }
+        // public virtual ICollection<Clinic>  Clinics { get; set; }
 
-        public int? PatientId { get; set; }
-        public virtual Patient Patient { get; set; }
+        //public int? PatientId { get; set; }
+        //public virtual Patient Patient { get; set; }
 
         //public int? StatesDictionaryId { get; set; }
         //public virtual StatesDictionary StatesDictionary { get; set; }

@@ -36,6 +36,6 @@ namespace PainClinic.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<PainClinic.Models.ViewModels.PatientDataViewModel> PatientDataViewModels { get; set; }
+       
     }
 }

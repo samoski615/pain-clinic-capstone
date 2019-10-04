@@ -3,7 +3,7 @@ namespace PainClinic.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Intial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -16,8 +16,6 @@ namespace PainClinic.Migrations
                         City = c.String(),
                         State = c.String(),
                         Zipcode = c.String(),
-                        Latitude = c.Double(nullable: false),
-                        Longitude = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.AddressesId);
             
@@ -34,21 +32,20 @@ namespace PainClinic.Migrations
                 .Index(t => t.AddressesId);
             
             CreateTable(
-                "dbo.ClinicDirectories",
+                "dbo.DailyPainJournals",
                 c => new
                     {
-                        ClinicDirectoryId = c.Int(nullable: false, identity: true),
-                        ProviderId = c.Int(nullable: false),
-                        PatientId = c.Int(nullable: false),
-                        ClinicId = c.Int(nullable: false),
+                        DailyPainJournalId = c.Int(nullable: false, identity: true),
+                        PainRating = c.String(nullable: false),
+                        PainLocation = c.String(nullable: false),
+                        AmountOfSleep = c.String(nullable: false),
+                        ActivityLevel = c.String(nullable: false),
+                        SearchDate = c.DateTime(nullable: false),
+                        PatientId = c.Int(),
                     })
-                .PrimaryKey(t => t.ClinicDirectoryId)
-                .ForeignKey("dbo.Clinics", t => t.ClinicId, cascadeDelete: true)
-                .ForeignKey("dbo.Patients", t => t.PatientId, cascadeDelete: true)
-                .ForeignKey("dbo.Providers", t => t.ProviderId, cascadeDelete: true)
-                .Index(t => t.ProviderId)
-                .Index(t => t.PatientId)
-                .Index(t => t.ClinicId);
+                .PrimaryKey(t => t.DailyPainJournalId)
+                .ForeignKey("dbo.Patients", t => t.PatientId)
+                .Index(t => t.PatientId);
             
             CreateTable(
                 "dbo.Patients",
@@ -57,19 +54,17 @@ namespace PainClinic.Migrations
                         PatientId = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
-                        RxReceived = c.Boolean(),
+                        RxRequested = c.Boolean(),
+                        RxFilled = c.Boolean(),
                         PatientBalance = c.Double(),
                         ApplicationId = c.String(maxLength: 128),
                         AddressesId = c.Int(),
-                        PatientDataViewModel_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.PatientId)
                 .ForeignKey("dbo.Addresses", t => t.AddressesId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.PatientDataViewModels", t => t.PatientDataViewModel_Id)
                 .Index(t => t.ApplicationId)
-                .Index(t => t.AddressesId)
-                .Index(t => t.PatientDataViewModel_Id);
+                .Index(t => t.AddressesId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -130,24 +125,12 @@ namespace PainClinic.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.DailyPainJournals",
+                "dbo.PatientPainDatas",
                 c => new
                     {
-                        DailyPainJournalId = c.Int(nullable: false, identity: true),
-                        TodaysDate = c.DateTime(nullable: false),
-                        PainRating = c.String(),
-                        PainLocation = c.String(),
-                        AmountOfSleep = c.String(),
-                        ActivityLevel = c.String(),
-                        DailyActivities = c.String(),
-                        Patient_PatientId = c.Int(),
-                        PatientDataViewModel_Id = c.Int(),
+                        PatientPainDataId = c.Int(nullable: false, identity: true),
                     })
-                .PrimaryKey(t => t.DailyPainJournalId)
-                .ForeignKey("dbo.Patients", t => t.Patient_PatientId)
-                .ForeignKey("dbo.PatientDataViewModels", t => t.PatientDataViewModel_Id)
-                .Index(t => t.Patient_PatientId)
-                .Index(t => t.PatientDataViewModel_Id);
+                .PrimaryKey(t => t.PatientPainDataId);
             
             CreateTable(
                 "dbo.Providers",
@@ -157,45 +140,14 @@ namespace PainClinic.Migrations
                         Prefix = c.String(),
                         FirstName = c.String(nullable: false),
                         LastName = c.String(nullable: false),
-                        RxReceived = c.Boolean(),
+                        RxRequested = c.Boolean(),
+                        RxFilled = c.Boolean(),
                         PatientBalance = c.Double(),
                         ApplicationId = c.String(maxLength: 128),
-                        PatientDataVM_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.ProviderId)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.PatientDataViewModels", t => t.PatientDataVM_Id)
-                .Index(t => t.ApplicationId)
-                .Index(t => t.PatientDataVM_Id);
-            
-            CreateTable(
-                "dbo.PatientDataViewModels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DailyPainJournal_DailyPainJournalId = c.Int(),
-                        Patient_PatientId = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.DailyPainJournals", t => t.DailyPainJournal_DailyPainJournalId)
-                .ForeignKey("dbo.Patients", t => t.Patient_PatientId)
-                .Index(t => t.DailyPainJournal_DailyPainJournalId)
-                .Index(t => t.Patient_PatientId);
-            
-            CreateTable(
-                "dbo.PatientPainDatas",
-                c => new
-                    {
-                        PatientPainDataId = c.Int(nullable: false, identity: true),
-                        DailyLogId = c.Int(nullable: false),
-                        PatientId = c.Int(nullable: false),
-                        DailyLog_DailyPainJournalId = c.Int(),
-                    })
-                .PrimaryKey(t => t.PatientPainDataId)
-                .ForeignKey("dbo.DailyPainJournals", t => t.DailyLog_DailyPainJournalId)
-                .ForeignKey("dbo.Patients", t => t.PatientId, cascadeDelete: true)
-                .Index(t => t.PatientId)
-                .Index(t => t.DailyLog_DailyPainJournalId);
+                .Index(t => t.ApplicationId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -212,56 +164,34 @@ namespace PainClinic.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.PatientPainDatas", "PatientId", "dbo.Patients");
-            DropForeignKey("dbo.PatientPainDatas", "DailyLog_DailyPainJournalId", "dbo.DailyPainJournals");
-            DropForeignKey("dbo.Providers", "PatientDataVM_Id", "dbo.PatientDataViewModels");
-            DropForeignKey("dbo.Patients", "PatientDataViewModel_Id", "dbo.PatientDataViewModels");
-            DropForeignKey("dbo.PatientDataViewModels", "Patient_PatientId", "dbo.Patients");
-            DropForeignKey("dbo.DailyPainJournals", "PatientDataViewModel_Id", "dbo.PatientDataViewModels");
-            DropForeignKey("dbo.PatientDataViewModels", "DailyPainJournal_DailyPainJournalId", "dbo.DailyPainJournals");
-            DropForeignKey("dbo.ClinicDirectories", "ProviderId", "dbo.Providers");
             DropForeignKey("dbo.Providers", "ApplicationId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.DailyPainJournals", "Patient_PatientId", "dbo.Patients");
-            DropForeignKey("dbo.ClinicDirectories", "PatientId", "dbo.Patients");
+            DropForeignKey("dbo.DailyPainJournals", "PatientId", "dbo.Patients");
             DropForeignKey("dbo.Patients", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Patients", "AddressesId", "dbo.Addresses");
-            DropForeignKey("dbo.ClinicDirectories", "ClinicId", "dbo.Clinics");
             DropForeignKey("dbo.Clinics", "AddressesId", "dbo.Addresses");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.PatientPainDatas", new[] { "DailyLog_DailyPainJournalId" });
-            DropIndex("dbo.PatientPainDatas", new[] { "PatientId" });
-            DropIndex("dbo.PatientDataViewModels", new[] { "Patient_PatientId" });
-            DropIndex("dbo.PatientDataViewModels", new[] { "DailyPainJournal_DailyPainJournalId" });
-            DropIndex("dbo.Providers", new[] { "PatientDataVM_Id" });
             DropIndex("dbo.Providers", new[] { "ApplicationId" });
-            DropIndex("dbo.DailyPainJournals", new[] { "PatientDataViewModel_Id" });
-            DropIndex("dbo.DailyPainJournals", new[] { "Patient_PatientId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Patients", new[] { "PatientDataViewModel_Id" });
             DropIndex("dbo.Patients", new[] { "AddressesId" });
             DropIndex("dbo.Patients", new[] { "ApplicationId" });
-            DropIndex("dbo.ClinicDirectories", new[] { "ClinicId" });
-            DropIndex("dbo.ClinicDirectories", new[] { "PatientId" });
-            DropIndex("dbo.ClinicDirectories", new[] { "ProviderId" });
+            DropIndex("dbo.DailyPainJournals", new[] { "PatientId" });
             DropIndex("dbo.Clinics", new[] { "AddressesId" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.PatientPainDatas");
-            DropTable("dbo.PatientDataViewModels");
             DropTable("dbo.Providers");
-            DropTable("dbo.DailyPainJournals");
+            DropTable("dbo.PatientPainDatas");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Patients");
-            DropTable("dbo.ClinicDirectories");
+            DropTable("dbo.DailyPainJournals");
             DropTable("dbo.Clinics");
             DropTable("dbo.Addresses");
         }

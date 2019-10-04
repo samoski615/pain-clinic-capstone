@@ -13,14 +13,14 @@ namespace PainClinic.Models
         [HiddenInput(DisplayValue = false)]
         public int ClinicDirectoryId { get; set; }
 
-        public int ProviderId { get; set; }
-        public virtual Provider Provider { get; set; }
+        //public int ProviderId { get; set; }
+        //public virtual Provider Provider { get; set; }
 
-        public int PatientId { get; set; }
-        public virtual Patient Patient { get; set; }
+        //public int PatientId { get; set; }
+        //public virtual Patient Patient { get; set; }
 
-        public int ClinicId { get; set; }
-        public virtual Clinic Clinic { get; set; }
+        //public int ClinicId { get; set; }
+        //public virtual Clinic Clinic { get; set; }
 
     }
 }

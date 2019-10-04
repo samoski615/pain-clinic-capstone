@@ -8,11 +8,12 @@ using System.Web.Mvc;
 
 namespace PainClinic.Models.ViewModels
 {
+
     public class PatientDataViewModel
     {
         //Patient DataViewModel -- use for creating a new DailyPainJournal 
 
-        public int Id { get; set; }
+       
         public Patient Patient { get; set; }
         public List<Patient> Patients { get; set; }
         public DailyPainJournal DailyPainJournal { get; set; }

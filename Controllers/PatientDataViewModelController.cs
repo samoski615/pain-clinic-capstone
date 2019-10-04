@@ -51,7 +51,7 @@ namespace PainClinic.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PatientDataViewModel dataViewModel = db.PatientDataViewModels.Find(id);
+            Patient dataViewModel = db.Patients.Find(id);
             if (dataViewModel == null)
             {
                 return HttpNotFound();

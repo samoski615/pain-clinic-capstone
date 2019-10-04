@@ -16,8 +16,8 @@ namespace PainClinic.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProviderId { get; set; }
 
-        public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
-        public PatientDataViewModel PatientDataVM { get; set; }
+        // public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        //public PatientDataViewModel PatientDataVM { get; set; }
 
         [Display(Name = "Prefix")]
         public string Prefix { get; set; }

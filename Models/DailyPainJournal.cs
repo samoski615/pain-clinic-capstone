@@ -16,7 +16,7 @@ namespace PainClinic.Models
         [HiddenInput(DisplayValue = false)]
         public int DailyPainJournalId { get; set; }
 
-        public virtual ICollection<Patient> Patients { get; set; }
+       //  public virtual ICollection<Patient> Patients { get; set; }
 
         [Required]
         [Display(Name = "Pain Scale")] 
@@ -39,6 +39,8 @@ namespace PainClinic.Models
         [DataType(DataType.Date)]
         public DateTime SearchDate { get; set; }
 
+
+        [ForeignKey("Patient")]
         public int? PatientId { get; set; }
         public Patient Patient { get; set; }
 
