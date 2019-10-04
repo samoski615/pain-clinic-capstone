@@ -11,14 +11,15 @@ namespace PainClinic.Models.ViewModels
 
     public class PatientDataViewModel
     {
-        //Patient DataViewModel -- use for creating a new DailyPainJournal 
+        //Patient DataViewModel -- use for creating and accessing a new DailyPainJournal 
 
        
         public Patient Patient { get; set; }
         public List<Patient> Patients { get; set; }
         public DailyPainJournal DailyPainJournal { get; set; }
         public List<DailyPainJournal> GetDailyLogs { get; set; }
-
+        public Provider Provider { get; set; }
+        
         //public int PainScore { get; set; }
         //[NotMapped]
         //public SelectList PainScores { get; set; }

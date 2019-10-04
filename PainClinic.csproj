@@ -218,9 +218,17 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Migrations\201910041451483_initial.cs" />
-    <Compile Include="Migrations\201910041451483_initial.Designer.cs">
-      <DependentUpon>201910041451483_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910041555058_migration1.cs" />
+    <Compile Include="Migrations\201910041555058_migration1.Designer.cs">
+      <DependentUpon>201910041555058_migration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041704152_migration2.cs" />
+    <Compile Include="Migrations\201910041704152_migration2.Designer.cs">
+      <DependentUpon>201910041704152_migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041914269_migration3.cs" />
+    <Compile Include="Migrations\201910041914269_migration3.Designer.cs">
+      <DependentUpon>201910041914269_migration3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicDirectory.cs" />
@@ -229,7 +237,6 @@
     </Compile>
     <Compile Include="Models\Addresses.cs" />
     <Compile Include="Models\LocationInfo.cs" />
-    <Compile Include="Models\PatientPainData.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
@@ -319,11 +326,12 @@
     <Content Include="Views\PatientDataViewModel\Details.cshtml" />
     <Content Include="Views\Patients\PatientDetails.cshtml" />
     <Content Include="Views\PatientAcctMgmtViewModel\GoogleMapsAPI.cshtml" />
-    <Content Include="Views\PatientDataViewModel\LogDetails.cshtml" />
+    <Content Include="Views\PatientDataViewModel\PatientsDailyLogs.cshtml" />
     <Content Include="Views\PatientDataViewModel\DailyLogList.cshtml" />
-    <Content Include="Views\PatientDataViewModel\SearchByPainRating.cshtml" />
+    <Content Include="Views\SearchByPainRating.cshtml" />
     <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
     <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
+    <Content Include="Views\PatientDataViewModel\SearchPainRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,8 +353,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910041451483_initial.resx">
-      <DependentUpon>201910041451483_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910041555058_migration1.resx">
+      <DependentUpon>201910041555058_migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041704152_migration2.resx">
+      <DependentUpon>201910041704152_migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041914269_migration3.resx">
+      <DependentUpon>201910041914269_migration3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

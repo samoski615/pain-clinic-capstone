@@ -37,8 +37,7 @@ namespace PainClinic.Models
         [Required]
         [Display(Name = "Enter Date")]
         [DataType(DataType.Date)]
-        public DateTime SearchDate { get; set; }
-
+        public DateTime LogDate { get; set; }
 
         [ForeignKey("Patient")]
         public int? PatientId { get; set; }

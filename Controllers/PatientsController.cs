@@ -63,10 +63,10 @@ namespace PainClinic.Controllers
         {
             if (ModelState.IsValid)
             {
-                var currentUserId = User.Identity.GetUserId();
+                string currentUserId = User.Identity.GetUserId();
                 viewModel.Patient.ApplicationId = currentUserId;
-                var Patient = viewModel.Patient;
-                var Address = viewModel.Address;
+                Patient Patient = viewModel.Patient;
+                Addresses Address = viewModel.Address;
                 db.Addresses.Add(Address);
                 await db.SaveChangesAsync();
                 Patient.AddressesId = db.Addresses.Select(a => a.AddressesId).FirstOrDefault();
@@ -110,9 +110,7 @@ namespace PainClinic.Controllers
                 return View(viewModel);
             }
 
-
-
-            var Patient = viewModel.Patient.PatientId;
+            _ = viewModel.Patient.PatientId;
             _ = viewModel.Address.AddressesId;
             db.Entry(viewModel).State = EntityState.Modified;
             await db.SaveChangesAsync();

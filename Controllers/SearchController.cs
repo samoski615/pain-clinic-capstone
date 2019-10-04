@@ -77,40 +77,16 @@ namespace PainClinic.Controllers
 
         }
 
-        [HttpGet]
-        public ActionResult SearchByPainRating(DateTime? currentDate, int id, PatientDataViewModel viewModel)
-        {
-            //search daily logs of a patient by their pain level score for the past 30 days 
-
-
-            //get a list of PainRatings including list of dates
-
-            List<DailyPainJournal> patientToSearch = db.DailyPainJournals.Where(s => s.PatientId == id).ToList();
-            //patientToSearch.Where()
-            //list of pain journals and dates of patient
-
-
-            DateTime date30 = Convert.ToDateTime(30); //equals DateTime number 30
-            currentDate = DateTime.Today;  //equals date today
-            //searchDate = db.DailyPainJournals.Where(j => dateRange <= currentDate > date30);
-            //if (currentDate > dateRange )
-            //{
-               
-            //    return View(patientToSearch);
-            //}
-
-
-
-
-            return View();
+       
         }
-        //public ActionResult SearchByPainRating(string painRating, List<DateTime> searchDate, DateTime? currentDate, PatientDataViewModel viewModel)
 
-        //[HttpPost]
-        //public ActionResult SearchByPainLevel(string painLevel, string searchString, PatientDataViewModel viewModel)
-        //{
+       
 
-        //}
+
+
+
+
+
 
 
 
@@ -148,4 +124,4 @@ namespace PainClinic.Controllers
         //}
 
     }
-}
+

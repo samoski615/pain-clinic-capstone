@@ -29,7 +29,6 @@ namespace PainClinic.Models
         public DbSet<DailyPainJournal> DailyPainJournals { get; set; }
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<Addresses> Addresses { get; set; }
-        public DbSet<PatientPainData> PainData { get; set; }
 
         public static ApplicationDbContext Create()
         {

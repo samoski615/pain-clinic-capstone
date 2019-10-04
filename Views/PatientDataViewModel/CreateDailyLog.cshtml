@@ -10,10 +10,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.DailyPainJournal.SearchDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DailyPainJournal.LogDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DailyPainJournal.SearchDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DailyPainJournal.SearchDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DailyPainJournal.LogDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DailyPainJournal.LogDate, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -46,6 +46,9 @@ namespace PainClinic.Models
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime SearchDate { get; set; }
+        
         //[ForeignKey("Patient")]
         //[HiddenInput(DisplayValue = false)]
         //public int? PatientId { get; set; }

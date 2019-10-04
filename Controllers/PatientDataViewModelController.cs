@@ -45,17 +45,11 @@ namespace PainClinic.Controllers
         }
 
         // GET: PatientDataViewModel/Create
-        public ActionResult CreateDailyLog(int? id)
+        public ActionResult CreateDailyLog()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Patient dataViewModel = db.Patients.Find(id);
-            if (dataViewModel == null)
-            {
-                return HttpNotFound();
-            }
+            //PatientDataViewModel dataViewModel = new PatientDataViewModel();
+            //string currentUserId = User.Identity.GetUserId();
+            //Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
 
             var painRatingList = new List<string>() { "1", "2", "3", "4", "5" };
             ViewBag.painRatingList = painRatingList;
@@ -78,13 +72,13 @@ namespace PainClinic.Controllers
         public ActionResult CreateDailyLog(PatientDataViewModel dataViewModel)
         {
             //method for creating a new daily pain log
-
+           
             if (ModelState.IsValid)
             {
                 string currentUserId = User.Identity.GetUserId();
                 Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
                 dataViewModel.DailyPainJournal.PatientId = currentPatient.PatientId;
-                db.Entry(dataViewModel).State = EntityState.Added;
+                db.DailyPainJournals.Add(dataViewModel.DailyPainJournal);
                 db.SaveChanges();              
             }
 
@@ -167,22 +161,61 @@ namespace PainClinic.Controllers
         }
         public ActionResult PatientList()
         {
-            //gets a list of a patient's daily logs
+            //gets a list of a patients for a current provider
 
             //1. user clicks 'PatientList' in navbar
-            //2. show list of patients -- eventually make this a list of patients specific to the provider logged in
+            //2. show list of patients -- eventually make this a list of patients specific to the provider logged in -- need to match the ProviderId and PatientId
 
-            _ = new PatientDataViewModel();
+            List<Patient> patients = db.Patients.ToList();
 
+            ViewBag.patients = patients;
+            return View(patients);
+        }
 
-            var journals = db.DailyPainJournals.ToList();
+        public ActionResult PatientsDailyLogs(int? id)
+        {
+            //gets a list of a patient's daily logs
+
+            Patient currentPatient = db.Patients.Where(p => p.PatientId == id).FirstOrDefault();
+
+            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).ToList();                                                              
 
 
             ViewBag.dailyLogList = journals;
             return View(journals);
         }
-       
 
 
+
+        [HttpGet]
+        public ActionResult SearchPainRating(int? id)
+        {
+            DateTime currentDate = DateTime.Today;
+            DateTime searchDate = 
+
+            List<DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > currentDate).ToList();
+               
+        
+                
+
+            //2. select all pain ratings for 'patientToSearch' from the DailyPainJournals db
+            //patientToSearch.PainRating = db.DailyPainJournals.Select(s => s.PainRating).ToList();
+
+            return View("SearchPainRating");
+
+        }
+
+
+        [HttpPost]
+        public JsonResult SearchByPainLevel(PatientDataViewModel viewModel)
+        {
+            //method that searches daily logs of a patient by their pain level score for the past 30 days 
+
+
+
+
+
+            return Json(viewModel);
+        }
     }
 }
