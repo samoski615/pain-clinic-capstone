@@ -190,13 +190,15 @@ namespace PainClinic.Controllers
         [HttpGet]
         public ActionResult SearchPainRating(int? id)
         {
-            DateTime currentDate = DateTime.Today;
-            DateTime searchDate = 
+            //DateTime currentDate = DateTime.Today;
+            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(30));
 
-            List<DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > currentDate).ToList();
+            List <DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
                
         
-                
+              
+            
+
 
             //2. select all pain ratings for 'patientToSearch' from the DailyPainJournals db
             //patientToSearch.PainRating = db.DailyPainJournals.Select(s => s.PainRating).ToList();

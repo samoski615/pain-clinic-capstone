@@ -32,7 +32,7 @@ namespace PainClinic.Controllers
         // GET: PatientAcctMgmtViewModel/Create
         public ActionResult GetClinicDirections()
         {
-            return View();
+            return View("GoogleMapsAPI");
         }
 
         //POST: PatientAcctMgmtViewModel/Create
@@ -55,7 +55,7 @@ namespace PainClinic.Controllers
        //         viewModel.Address.Longitude = location.Results[0].Geometry.Location.Lng;
        //         db.Entry(viewModel).State = EntityState.Added;
        //         await db.SaveChangesAsync();
-       //         return RedirectToAction("GoogleMapsAPI");   //method to put here
+       //         return RedirectToAction("");   //method to put here
        //     }
        //     return View(viewModel);
        // }
