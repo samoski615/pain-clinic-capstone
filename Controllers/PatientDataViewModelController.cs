@@ -153,7 +153,7 @@ namespace PainClinic.Controllers
             string currentUserId = User.Identity.GetUserId();
             Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
 
-            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).ToList();
+            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).OrderByDescending(j => j.LogDate).ToList();
                                                                                    
 
             ViewBag.dailyLogList = journals;
@@ -178,7 +178,7 @@ namespace PainClinic.Controllers
 
             Patient currentPatient = db.Patients.Where(p => p.PatientId == id).FirstOrDefault();
 
-            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).ToList();                                                              
+            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).OrderByDescending(j => j.LogDate).ToList();                                                              
 
 
             ViewBag.dailyLogList = journals;
@@ -194,15 +194,7 @@ namespace PainClinic.Controllers
             DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(30));
 
             List <DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
-               
-        
-              
-            
-
-
-            //2. select all pain ratings for 'patientToSearch' from the DailyPainJournals db
-            //patientToSearch.PainRating = db.DailyPainJournals.Select(s => s.PainRating).ToList();
-
+       
             return View("SearchPainRating");
 
         }
