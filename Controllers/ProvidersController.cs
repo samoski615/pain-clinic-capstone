@@ -87,7 +87,7 @@ namespace PainClinic.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(provider).State = EntityState.Modified;
+                db.Providers.Add(provider);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

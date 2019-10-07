@@ -331,7 +331,7 @@
     <Content Include="Views\SearchByPainRating.cshtml" />
     <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
     <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
-    <Content Include="Views\PatientDataViewModel\SearchPainRating.cshtml" />
+    <Content Include="Views\PatientDataViewModel\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

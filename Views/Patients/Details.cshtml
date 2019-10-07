@@ -61,8 +61,8 @@
     
     <p>
         @Html.ActionLink("Edit", "Edit", "Patients", new { id = Model.Patient.PatientId }) |
-        @Html.ActionLink("Directions", "GetClinicDirections", "PatientAcctMgmtViewModel", new { id = Model.Patient.PatientId }) |
+        @*@Html.ActionLink("Directions", "GetClinicDirections", "PatientAcctMgmtViewModel", new { id = Model.Patient.PatientId }) |*@
         @Html.ActionLink("Pay Balance", "PayBalance", "PatientAcctMgmtViewModel", new { id = Model.Patient.PatientId }) |
-        @Html.ActionLink("Back to List", "Index", "Home")
+        @Html.ActionLink("Back", "Index", "Home")
     </p>
 </div>

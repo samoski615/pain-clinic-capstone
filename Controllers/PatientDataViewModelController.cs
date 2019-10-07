@@ -186,18 +186,42 @@ namespace PainClinic.Controllers
         }
 
 
-
-        [HttpGet]
-        public ActionResult SearchPainRating(int? id)
+        //[HttpGet]
+        public JsonResult Search(int? id)
         {
-            //DateTime currentDate = DateTime.Today;
-            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(30));
+            //1. gets a list of DailyPainJournals for the last 30 days
+            int nOfDays = 30;
+            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
+            List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
 
-            List <DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
-       
-            return View("SearchPainRating");
+
+            //2. filters out the PainRating from the last 30 days journals
+            //var painRatingList = dailyPainJournals.Select(s => s.PainRating).ToList();  //NOT WORKING///////////////////////////
+
+
+
+            //var painRatingList = dailyPainJournals.Cast<List<object>>().Select(list => new DailyPainJournal()
+            //{
+            //    PainRating = (string)list[0]
+            //}).ToList();
+
+            //List<DailyPainJournal> dailyPainJournals = patientToQuery.Cast<DailyPainJournal>().Select(s => s.PainRating).ToList();
+
+            return Json(dailyPainJournals, JsonRequestBehavior.AllowGet);
 
         }
+        //[HttpPost]
+        //public JsonResult SearchPainRating()
+        //{
+        //    //DateTime currentDate = DateTime.Today;
+        //    DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(30));
+
+        //    //List <DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
+        //    var dailyPainJournals = patientToQuery.Select(s => s.PainRating).ToList();
+            
+        //    return Json(dailyPainJournals);
+
+        //}
 
 
         [HttpPost]
