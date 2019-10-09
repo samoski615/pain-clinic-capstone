@@ -32,13 +32,15 @@ namespace PainClinic.Controllers
         //}
 
 
-        public ActionResult SearchPainRating(int? id)
+        public ActionResult SearchStatistics(int? id)
         {
             // gets a list of DailyPainJournals of a patient for the last 30 days
             int nOfDays = 30;
             DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
             List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
 
+
+            //filters dailyPainJournals from last 30 days and finds all Pain Ratings associated 
             List<string> painRatings = dailyPainJournals.Select(j => j.PainRating).ToList();
 
             var ratingOne = painRatings.Where(j => j.Contains("1")).ToList();
@@ -68,18 +70,22 @@ namespace PainClinic.Controllers
 
         public ActionResult SearchPainLocation(int? id)
         {
+            // gets a list of DailyPainJournals of a patient for the last 30 days
             int nOfDays = 30;
             DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
             List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
 
-            List<string> painRatings = dailyPainJournals.Select(j => j.PainRating).ToList();
+            //filters dailyPainJournals from last 30 days and finds all Pain Locations associated 
+            List<string> painLocations = dailyPainJournals.Select(j => j.PainLocation).ToList();
 
-            var ratingOne = painRatings.Where(j => j.Contains("1")).ToList();
+            var upperBack = painLocations.Where(j => j.Contains("Upper Back")).ToList();
 
-            var ratingTwo = painRatings.Where(j => j.Contains("2")).ToList();
-            var ratingThree = painRatings.Where(j => j.Contains("3")).ToList();
-            var ratingFour = painRatings.Where(j => j.Contains("4")).ToList();
-            var ratingFive = painRatings.Where(j => j.Contains("5")).ToList();
+            var ratingTwo = painLocations.Where(j => j.Contains("2")).ToList();
+            var ratingThree = painLocations.Where(j => j.Contains("3")).ToList();
+            var ratingFour = painLocations.Where(j => j.Contains("4")).ToList();
+            var ratingFive = painLocations.Where(j => j.Contains("5")).ToList();
+            var ratingFive = painLocations.Where(j => j.Contains("5")).ToList();
+            var ratingFive = painLocations.Where(j => j.Contains("5")).ToList();
 
             ViewBag.ratingOne = JsonConvert.SerializeObject(ratingOne);
             ViewBag.ratingTwo = JsonConvert.SerializeObject(ratingTwo);
