@@ -73,6 +73,9 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -147,9 +150,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201910041914269_migration3.Designer.cs">
       <DependentUpon>201910041914269_migration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910070459519_test78.cs" />
+    <Compile Include="Migrations\201910070459519_test78.Designer.cs">
+      <DependentUpon>201910070459519_test78.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicDirectory.cs" />
     <Compile Include="Global.asax.cs">
@@ -257,12 +261,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\DailyPainJournalLogo.png" />
+    <Content Include="Content\Images\proxy.duckduckgo.com.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\Uploads\Patient_Registration_And_Pain_Chart.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
@@ -332,9 +339,12 @@
     <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
     <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
     <Content Include="Views\PatientDataViewModel\Search.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\Uploads.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\Downloads.cshtml" />
+    <Content Include="Views\PatientDataViewModel\SearchPainRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Downloads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -361,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910041914269_migration3.resx">
       <DependentUpon>201910041914269_migration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910070459519_test78.resx">
+      <DependentUpon>201910070459519_test78.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

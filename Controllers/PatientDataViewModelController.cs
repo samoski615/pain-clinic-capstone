@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PainClinic.Models;
 using PainClinic.Models.ViewModels;
 using System;
@@ -22,6 +23,72 @@ namespace PainClinic.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        //public ActionResult GetPainRating(List<DailyPainJournal> journals)
+        //{
+        //    var getSearchResults = Search();
+
+        //}
+
+
+        public ActionResult SearchPainRating(int? id)
+        {
+            // gets a list of DailyPainJournals of a patient for the last 30 days
+            int nOfDays = 30;
+            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
+            List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
+
+            List<string> painRatings = dailyPainJournals.Select(j => j.PainRating).ToList();
+
+            var ratingOne = painRatings.Where(j => j.Contains("1")).ToList();
+            var ratingOneCount = ratingOne.Count();
+
+            var ratingTwo = painRatings.Where(j => j.Contains("2")).ToList();
+            var ratingTwoCount = ratingTwo.Count();
+
+            var ratingThree = painRatings.Where(j => j.Contains("3")).ToList();
+            var ratingThreeCount = ratingThree.Count();
+
+            var ratingFour = painRatings.Where(j => j.Contains("4")).ToList();
+            var ratingFourCount = ratingFour.Count();
+
+            var ratingFive = painRatings.Where(j => j.Contains("5")).ToList();
+            var ratingFiveCount = ratingFive.Count();
+
+            ViewBag.ratingOne = JsonConvert.SerializeObject(ratingOneCount);
+            ViewBag.ratingTwo = JsonConvert.SerializeObject(ratingTwoCount);
+            ViewBag.ratingThree = JsonConvert.SerializeObject(ratingThreeCount);
+            ViewBag.ratingFour = JsonConvert.SerializeObject(ratingFourCount);
+            ViewBag.ratingFive = JsonConvert.SerializeObject(ratingFiveCount);
+
+            return View();
+
+        }
+
+        public ActionResult SearchPainLocation(int? id)
+        {
+            int nOfDays = 30;
+            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
+            List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
+
+            List<string> painRatings = dailyPainJournals.Select(j => j.PainRating).ToList();
+
+            var ratingOne = painRatings.Where(j => j.Contains("1")).ToList();
+
+            var ratingTwo = painRatings.Where(j => j.Contains("2")).ToList();
+            var ratingThree = painRatings.Where(j => j.Contains("3")).ToList();
+            var ratingFour = painRatings.Where(j => j.Contains("4")).ToList();
+            var ratingFive = painRatings.Where(j => j.Contains("5")).ToList();
+
+            ViewBag.ratingOne = JsonConvert.SerializeObject(ratingOne);
+            ViewBag.ratingTwo = JsonConvert.SerializeObject(ratingTwo);
+            ViewBag.ratingThree = JsonConvert.SerializeObject(ratingThree);
+            ViewBag.ratingFour = JsonConvert.SerializeObject(ratingFour);
+            ViewBag.ratingFive = JsonConvert.SerializeObject(ratingFive);
+
+            return View();
+
         }
 
         // GET: PatientDataViewModel/Details/5
@@ -186,30 +253,7 @@ namespace PainClinic.Controllers
         }
 
 
-        //[HttpGet]
-        public JsonResult Search(int? id)
-        {
-            //1. gets a list of DailyPainJournals for the last 30 days
-            int nOfDays = 30;
-            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
-            List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
-
-
-            //2. filters out the PainRating from the last 30 days journals
-            //var painRatingList = dailyPainJournals.Select(s => s.PainRating).ToList();  //NOT WORKING///////////////////////////
-
-
-
-            //var painRatingList = dailyPainJournals.Cast<List<object>>().Select(list => new DailyPainJournal()
-            //{
-            //    PainRating = (string)list[0]
-            //}).ToList();
-
-            //List<DailyPainJournal> dailyPainJournals = patientToQuery.Cast<DailyPainJournal>().Select(s => s.PainRating).ToList();
-
-            return Json(dailyPainJournals, JsonRequestBehavior.AllowGet);
-
-        }
+       
         //[HttpPost]
         //public JsonResult SearchPainRating()
         //{

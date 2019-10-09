@@ -2,7 +2,7 @@
 @model IEnumerable<PainClinic.Models.DailyPainJournal>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Patient Daily Logs";
 }
 
 <h2>Index</h2>
@@ -49,7 +49,7 @@
         @Html.DisplayFor(modelItem => item.ActivityLevel)
     </td>
     <td>
-            @Html.ActionLink("Search", "Search", "PatientDataViewModel", new { id = item.PatientId } , null) 
+            @Html.ActionLink("Search", "SearchPainRating", "PatientDataViewModel", new { id = item.PatientId } , null) 
         </td>
 </tr>
     }

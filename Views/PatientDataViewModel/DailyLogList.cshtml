@@ -1,38 +1,58 @@
-﻿@model List<PainClinic.Models.DailyPainJournal>
+﻿@model IEnumerable<PainClinic.Models.DailyPainJournal>
 
 @{
-    ViewBag.Title = "Daily Log List";
+    ViewBag.Title = "Index";
 }
 
-<center>
-    <h1>Placeholder Title</h1>
-    <h2>Daily Log List</h2>
-    <hr />
-    <table border="1">
-        <tr>
-            <th>Pain Rating</th>
-            <th>Pain Location</th>
-            <th>Amount of Sleep</th>
-            <th>Activity Level</th>
-            <th>Date</th>
-        </tr>
+<h2>Index</h2>
 
-        @foreach (var item in ViewBag.dailyLogList)
-        {
-            <tr>
-                <td>@item.PainRating</td>
-                <td>@item.PainLocation</td>
-                <td>@item.AmountOfSleep</td>
-                <td>@item.ActivityLevel</td>
-                <td>@item.LogDate</td>
-            
-            
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PatientId }) |
-                    @Html.ActionLink("Create New Log", "CreateDailyLog", new { id = item.PatientId })
-                    @*@Html.ActionLink("Delete", "Delete", new { id = item.PatientId })*@
-                </td>
-            </tr>
-        }
-    </table>
-</center>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DailyPainJournal.LogDate)*@<b>LOG DATE</b>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DailyPainJournal.PainRating)*@<b>PAIN RATING</b>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DailyPainJournal.PainLocation)*@<b>PAIN LOCATION</b>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DailyPainJournal.AmountOfSleep)*@<b>AMOUNT OF SLEEP</b>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DailyPainJournal.ActivityLevel)*@<b>ACTIVITY LEVEL</b>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <th>
+        @Html.DisplayFor(modelItem => item.LogDate)
+    </th>
+    <td>
+        @Html.DisplayFor(modelItem => item.PainRating)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PainLocation)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AmountOfSleep)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ActivityLevel)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.PatientId }) |
+        @Html.ActionLink("Create New Log", "CreateDailyLog", new { id = item.PatientId })
+        @*@Html.ActionLink("Delete", "Delete", new { id = item.PatientId })*@
+    </td>
+    </tr>
+    }
+
+</table>

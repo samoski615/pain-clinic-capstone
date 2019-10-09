@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.providers {
+    background-image: url("Images/proxy.duckduckgo.com.jpg");
+    background-repeat: no-repeat;
+}

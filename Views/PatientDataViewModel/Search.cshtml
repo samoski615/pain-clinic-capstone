@@ -1,91 +1,36 @@
-﻿@model List<PainClinic.Models.DailyPainJournal>
 
-@{
+@{ 
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width= device-width" />
-    <title>Pain Rating View</title>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript">
+    <head>
+        <meta name="viewport"  charset="utf-8" content="width=device-width"/>
+        <title>Search</title>
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
 
-        function callNewChart() {
-            var chart = new CanvasJS.Chart("chartContainer", {
-                title: {
-                    text: "A Monthly Overview of Your Pain Outlook"
-                },
-                $.getJSON("")
-                data: [
-                    {
-                        // Change type to "doughnut", "line", "splineArea", etc.
-                        type: "bar",
-                        dataPoints: [
-                            { label: "Pain Rating", y: 1 },
-                            { label: "Pain Location", y: 2},
-                            { label: "Amount of Sleep", y: 3 },
-                            { label: "Activity Level", y: 4 },
-                            //{ label: "grape", y: 5 }
-                        ]
-                    }
-                ]
-            });
-            chart.render();
-        }
-    </script>
-</head>
-<body>
-    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-    <input type="button" id="btnPainRating" value="Pain Rating" />
-    <input type="button" id="btnPainLocation" value="Pain Location" />
-    <input type="button" id="btnAmountOfSleep" value="Amount of Sleep" />
-    <input type="button" id="btnActivityLevel" value="Activity Level" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var $painRatingsResults = $('#pain-ratings');
+    </head>
+    <body>
+    <div>
+        <h1>Test Header</h1>
+        @ViewBag.ratingOne
+        @ViewBag.ratingTwo
+        @ViewBag.ratingThree
+        @ViewBag.ratingFour
+        @ViewBag.ratingFive
+        <div>
+            <h2>DailyPainJournalId</h2> - <h2 id="jId"></h2>
+            <h2>PainRating</h2> - <h2 id="jPainRating"></h2>
+            <h2>PainLocation</h2> - <h2 id="jPainLocation"></h2>
+            <h2>AmountOfSleep</h2> - <h2 id="jAmountOfSleep"></h2>
+            <h2>ActivityLevel</h2> - <h2 id="jActivityLevel"></h2>
+            <h2>LogDate</h2> - <h2 id="jLogDate"></h2>
+        </div>
 
-            $("btnPainRating").click(function (callNewChart) {
-                $.ajax({
-                    method: 'get',
-                    url: '/PatientDataViewModel/SearchPainRating/{id}',
-                    dataType: 'json',
-                    data: '{PainRating:' + $painRatingsResults + '}',
-                    success: function (data)
-                    {
-                        $('window.onload.data.')
-                    },
-                    error: function (error)
-                    {
-                        alert(error)
-                    }
-                }),
-            });
-
-
-    </script>
+        <input type="button" id="btnClick" onclick="BtnClick()" value="Click Me" />
+    </div>
+  
 </body>
 </html>
-
-
-        $(function () {
-            var $painRatings = $('#pain-ratings');
-
-            $.ajax({
-                type: 'GET',
-                url: '/PatientDataViewModel/SearchPainRating/{id}',
-                success: function (painRatings) {
-                    $.each(painRatings, function (i, painRating) {
-                        $painRatings.append('<li>Pain Rating: ' + painRating.painRating + '<li>
-    ');
-    });
-    },
-    error: function () {
-    alert('Uh oh, something went wrong!');
-    }
-    });
-    });
 

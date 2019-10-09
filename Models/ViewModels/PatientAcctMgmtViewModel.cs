@@ -10,6 +10,6 @@ namespace PainClinic.Models.ViewModels
         public Patient Patient { get; set; }
         public Addresses Address { get; set; }
         public LocationInfo LocationInfo { get; set; }
-
+        public Provider Provider { get; set; }
     }
 }

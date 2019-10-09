@@ -30,17 +30,49 @@
 
     <script>
         function initMap() {
-            var dCC = { lat: 43.034271, lng: -87.911919 }
+            var bounds = new google.maps.LatLngBounds();
+            //Display a map on the page
             var map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 43.0389, lng: -87.9065 },
+                center: { lat: 42.958280, lng: -87.971130 },
                 zoom: 8,
-                center: dCC
+                center: advancedPainManagement
             });
-            var marker = new google.maps.Marker({
-                position: dCC,
-                map: map
+
+            //Multiple markers
+            var markers = ['Advanced Pain Management', 42.958280, -87.971130];
+                ['Advanced Pain Therapies', 44.276640, -88.474190];
+            ['Milwaukee Pain Treatment', 43.115240, -88.058690];
+        
+            //Info Window Content
+            var infoWindowContent = [
+                '<div class = "info-content">' + '<h3>Advanced Pain Management</h3>' + '<p>4448 W Loomis Rd' + '</br>Greenfield, WI 53220</p>' + '</div>'];
+
+            //Display mulitple markers on a map
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+            //Loop through our array of markers & place each one on the map
+            for (i = 0; i < markers.length; i++) {
+                var position = new google.maps.LatLng(markers[i][1], markers[i][2], markers[i][3]);
+            }
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: markers[i][0]
             });
-        }
+
+            //Allow each marker to have an info window
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infoWindow.setContent(infoWindowContent[i][0]);
+                    infoWindow.open(map, marker);
+                }
+            })(marker, i));
+
+            //Automatically center the map fitting all markers on the screen
+            map.fitBounds(bounds);
+        });
+            
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABkqcRJsP0cZpP3GTYyZDeTxC3iaUDoMQ&callback=initMap"></script>
 
@@ -49,4 +81,6 @@
 
 
 
-
+             //var advancedPainManagement = { lat: 42.958280, lng: -87.971130 }
+            //var advancedPainTherapies = { lat: 44.276640, lng: -88.474190 }
+            //var milwaukeePainTreatment = { lat: 43.115240, lng: -88.058690 }
