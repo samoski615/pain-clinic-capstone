@@ -132,7 +132,7 @@ namespace PainClinic.Controllers
             ViewBag.twoHour = JsonConvert.SerializeObject(twoHourCount);
             ViewBag.threeHour = JsonConvert.SerializeObject(threeHourCount);
             ViewBag.fourHour = JsonConvert.SerializeObject(fourHourCount);
-            ViewBag.fiveHour= JsonConvert.SerializeObject(fiveHourCount);
+            ViewBag.fiveHour = JsonConvert.SerializeObject(fiveHourCount);
             ViewBag.sixHour = JsonConvert.SerializeObject(sixHourCount);
             ViewBag.sevenHour = JsonConvert.SerializeObject(sevenHourCount);
             ViewBag.eightOrMoreHour = JsonConvert.SerializeObject(eightOrMoreHourCount);
@@ -158,50 +158,6 @@ namespace PainClinic.Controllers
 
         }
 
-        //public ActionResult SearchPainLocation(int? id)
-        //{
-        //    // gets a list of DailyPainJournals of a patient for the last 30 days
-        //    int nOfDays = 30;
-        //    DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
-        //    List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
-
-        //    //filters dailyPainJournals from last 30 days and finds all Pain Locations associated 
-        //    List<string> painLocations = dailyPainJournals.Select(j => j.PainLocation).ToList();
-
-        //    List<string> upperBack = painLocations.Where(j => j.Contains("Upper Back")).ToList();
-        //    int upperBackCount = upperBack.Count();
-
-        //    List<string> lowerBack = painLocations.Where(j => j.Contains("Lower Back")).ToList();
-        //    int lowerBackCount = lowerBack.Count();
-
-        //    List<string> neck = painLocations.Where(j => j.Contains("Neck")).ToList();
-        //    int neckCount = neck.Count();
-
-        //    List<string> head = painLocations.Where(j => j.Contains("Head")).ToList();
-        //    int headCount = head.Count();
-
-        //    List<string> legs = painLocations.Where(j => j.Contains("Legs")).ToList();
-        //    int legsCount = legs.Count();
-
-        //    List<string> arms = painLocations.Where(j => j.Contains("Arms")).ToList();
-        //    int armsCount = arms.Count();
-
-        //    List<string> shoulders = painLocations.Where(j => j.Contains("Shoulders")).ToList();
-        //    int shouldersCount = shoulders.Count();
-
-
-        //    ViewBag.upperBack = JsonConvert.SerializeObject(upperBackCount);
-        //    ViewBag.lowerBack = JsonConvert.SerializeObject(lowerBackCount);
-        //    ViewBag.neck = JsonConvert.SerializeObject(neckCount);
-        //    ViewBag.head = JsonConvert.SerializeObject(headCount);
-        //    ViewBag.legs = JsonConvert.SerializeObject(legsCount);
-        //    ViewBag.arms = JsonConvert.SerializeObject(armsCount);
-        //    ViewBag.shoulders = JsonConvert.SerializeObject(shouldersCount);
-
-        //    return View();
-
-        //}
-
         // GET: PatientDataViewModel/Details/5
         public ActionResult Details()
         {
@@ -219,7 +175,7 @@ namespace PainClinic.Controllers
                 return HttpNotFound();
             }
 
-            return View(viewModel); 
+            return View(viewModel);
         }
 
         // GET: PatientDataViewModel/Create
@@ -250,21 +206,21 @@ namespace PainClinic.Controllers
         public ActionResult CreateDailyLog(PatientDataViewModel dataViewModel)
         {
             //method for creating a new daily pain log
-           
+
             if (ModelState.IsValid)
             {
                 string currentUserId = User.Identity.GetUserId();
                 Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
                 dataViewModel.DailyPainJournal.PatientId = currentPatient.PatientId;
                 db.DailyPainJournals.Add(dataViewModel.DailyPainJournal);
-                db.SaveChanges();              
+                db.SaveChanges();
             }
 
             else if (!ModelState.IsValid)
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("DailyLogList");     
+            return RedirectToAction("DailyLogList");
         }
 
         //GET: PatientDataViewModel/Edit/5
@@ -316,7 +272,7 @@ namespace PainClinic.Controllers
                 return View();
             }
 
-           
+
         }
         public ActionResult DailyLogList()
         {
@@ -332,7 +288,7 @@ namespace PainClinic.Controllers
             Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
 
             List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).OrderByDescending(j => j.LogDate).ToList();
-                                                                                   
+
 
             ViewBag.dailyLogList = journals;
             return View(journals);
@@ -356,7 +312,7 @@ namespace PainClinic.Controllers
 
             Patient currentPatient = db.Patients.Where(p => p.PatientId == id).FirstOrDefault();
 
-            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).OrderByDescending(j => j.LogDate).ToList();                                                              
+            List<DailyPainJournal> journals = db.DailyPainJournals.Where(j => currentPatient.PatientId == j.PatientId).OrderByDescending(j => j.LogDate).ToList();
 
 
             ViewBag.dailyLogList = journals;
@@ -364,31 +320,15 @@ namespace PainClinic.Controllers
         }
 
 
-       
-        //[HttpPost]
-        //public JsonResult SearchPainRating()
+        //public ActionResult PrescriptionRequest(int? id)
         //{
-        //    //DateTime currentDate = DateTime.Today;
-        //    DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(30));
-
-        //    //List <DailyPainJournal> patientToQuery = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
-        //    var dailyPainJournals = patientToQuery.Select(s => s.PainRating).ToList();
-            
-        //    return Json(dailyPainJournals);
 
         //}
 
+        //public ActionResult UpdateCustomerBalance(int? id)
+        //{
 
-        [HttpPost]
-        public JsonResult SearchByPainLevel(PatientDataViewModel viewModel)
-        {
-            //method that searches daily logs of a patient by their pain level score for the past 30 days 
-
-
-
-
-
-            return Json(viewModel);
-        }
-    }
+        //}
+    }      
+   
 }

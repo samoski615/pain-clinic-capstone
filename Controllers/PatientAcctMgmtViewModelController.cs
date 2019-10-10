@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.IO;
+using Microsoft.AspNet.Identity;
 
 namespace PainClinic.Controllers
 {
@@ -157,6 +158,37 @@ namespace PainClinic.Controllers
             {
                 return View();
             }
+        }
+
+
+        //GET: PatientRxRequest
+        public ActionResult CreateRxRequest()
+        {
+            return View();
+        }
+
+
+        //POST: PatientRxRequest
+        [HttpPost]
+        public ActionResult CreateRxRequest(PatientAcctMgmtViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string currentUserId = User.Identity.GetUserId();
+                Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
+                viewModel.Prescription.PatientId = currentPatient.PatientId;
+                viewModel.Patient.RxRequested = true;
+                viewModel.Patient.RxRequested = currentPatient.RxRequested;
+                db.Prescriptions.Add(viewModel.Prescription);
+                db.SaveChanges();
+            }
+
+            else if (!ModelState.IsValid)
+            {
+                return HttpNotFound();
+            }
+            return View("~/Views/Patients/PatientDetails.cshtml");
+
         }
     }
 }

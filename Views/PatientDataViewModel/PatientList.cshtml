@@ -40,8 +40,9 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.ActionLink("Daily Pain Logs", "PatientsDailyLogs", "PatientDataViewModel", new { id = item.PatientId }, null) 
-                @*@Html.ActionLink("Prescription Request", "PrescriptionRequest", new { id = item.Patient.PatientId })*@
+                @Html.ActionLink("Pain Log Statistics", "SearchStatistics", "PatientDataViewModel", new { id = item.PatientId }, null) |
+                @Html.ActionLink("Prescription Request", "PrescriptionRequest", "PatientDataViewModel", new { id = item.PatientId }, null) |   //Change navigation here -- and name of action? maybe
+                @Html.ActionLink("Update Balance", "UpdateCustomerBalance", "PatientDataViewModel", new { id = item.PatientId }, null)
             </td>
         </tr>
     }

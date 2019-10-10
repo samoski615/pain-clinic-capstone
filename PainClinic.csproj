@@ -221,6 +221,18 @@
     <Compile Include="Migrations\201910100421445_nextMigration.Designer.cs">
       <DependentUpon>201910100421445_nextMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910101438530_nextMigration1.cs" />
+    <Compile Include="Migrations\201910101438530_nextMigration1.Designer.cs">
+      <DependentUpon>201910101438530_nextMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101457277_nextMigration2.cs" />
+    <Compile Include="Migrations\201910101457277_nextMigration2.Designer.cs">
+      <DependentUpon>201910101457277_nextMigration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101502513_nextMigration3.cs" />
+    <Compile Include="Migrations\201910101502513_nextMigration3.Designer.cs">
+      <DependentUpon>201910101502513_nextMigration3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PatientAcctMgmtViewModelController.cs" />
@@ -253,6 +265,7 @@
     </Compile>
     <Compile Include="Models\Addresses.cs" />
     <Compile Include="Models\LocationInfo.cs" />
+    <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
@@ -357,6 +370,7 @@
     <Content Include="Views\PatientAcctMgmtViewModel\Downloads.cshtml" />
     <Content Include="Views\PatientDataViewModel\SearchStatistics.cshtml" />
     <Content Include="Views\Chat\Chat.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\CreateRxRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Downloads\" />
@@ -392,6 +406,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910100421445_nextMigration.resx">
       <DependentUpon>201910100421445_nextMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101438530_nextMigration1.resx">
+      <DependentUpon>201910101438530_nextMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101457277_nextMigration2.resx">
+      <DependentUpon>201910101457277_nextMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101502513_nextMigration3.resx">
+      <DependentUpon>201910101502513_nextMigration3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

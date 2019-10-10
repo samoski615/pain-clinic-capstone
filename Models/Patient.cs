@@ -49,6 +49,7 @@ namespace PainClinic.Models
         public int? AddressesId { get; set; }
         public Addresses Addresses { get; set; }
 
+
         //[ForeignKey("Provider")]
         //[InverseProperty("Provider")]
         //[HiddenInput(DisplayValue = false)]
