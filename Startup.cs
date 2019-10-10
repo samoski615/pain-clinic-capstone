@@ -13,6 +13,7 @@ namespace PainClinic
         {
             ConfigureAuth(app);
             CreateRolesAndUsers();
+            app.MapSignalR();
         }
 
         //this method creates default User roles 

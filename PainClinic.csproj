@@ -54,6 +54,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
     </Reference>
@@ -210,6 +216,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Migrations\201910100421445_nextMigration.cs" />
+    <Compile Include="Migrations\201910100421445_nextMigration.Designer.cs">
+      <DependentUpon>201910100421445_nextMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PatientAcctMgmtViewModelController.cs" />
     <Compile Include="Controllers\PatientDataViewModelController.cs" />
@@ -278,6 +290,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -338,10 +352,11 @@
     <Content Include="Views\SearchByPainRating.cshtml" />
     <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
     <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
-    <Content Include="Views\PatientDataViewModel\Search.cshtml" />
+    <Content Include="Views\Search.cshtml" />
     <Content Include="Views\PatientAcctMgmtViewModel\Uploads.cshtml" />
     <Content Include="Views\PatientAcctMgmtViewModel\Downloads.cshtml" />
-    <Content Include="Views\PatientDataViewModel\SearchPainRating.cshtml" />
+    <Content Include="Views\PatientDataViewModel\SearchStatistics.cshtml" />
+    <Content Include="Views\Chat\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Downloads\" />
@@ -374,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910070459519_test78.resx">
       <DependentUpon>201910070459519_test78.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910100421445_nextMigration.resx">
+      <DependentUpon>201910100421445_nextMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -43,20 +43,20 @@ namespace PainClinic.Controllers
             //filters dailyPainJournals from last 30 days and finds all Pain Ratings associated 
             List<string> painRatings = dailyPainJournals.Select(j => j.PainRating).ToList();
 
-            var ratingOne = painRatings.Where(j => j.Contains("1")).ToList();
-            var ratingOneCount = ratingOne.Count();
+            List<string> ratingOne = painRatings.Where(j => j.Contains("1")).ToList();
+            int ratingOneCount = ratingOne.Count();
 
-            var ratingTwo = painRatings.Where(j => j.Contains("2")).ToList();
-            var ratingTwoCount = ratingTwo.Count();
+            List<string> ratingTwo = painRatings.Where(j => j.Contains("2")).ToList();
+            int ratingTwoCount = ratingTwo.Count();
 
-            var ratingThree = painRatings.Where(j => j.Contains("3")).ToList();
-            var ratingThreeCount = ratingThree.Count();
+            List<string> ratingThree = painRatings.Where(j => j.Contains("3")).ToList();
+            int ratingThreeCount = ratingThree.Count();
 
-            var ratingFour = painRatings.Where(j => j.Contains("4")).ToList();
-            var ratingFourCount = ratingFour.Count();
+            List<string> ratingFour = painRatings.Where(j => j.Contains("4")).ToList();
+            int ratingFourCount = ratingFour.Count();
 
-            var ratingFive = painRatings.Where(j => j.Contains("5")).ToList();
-            var ratingFiveCount = ratingFive.Count();
+            List<string> ratingFive = painRatings.Where(j => j.Contains("5")).ToList();
+            int ratingFiveCount = ratingFive.Count();
 
             ViewBag.ratingOne = JsonConvert.SerializeObject(ratingOneCount);
             ViewBag.ratingTwo = JsonConvert.SerializeObject(ratingTwoCount);
@@ -64,38 +64,143 @@ namespace PainClinic.Controllers
             ViewBag.ratingFour = JsonConvert.SerializeObject(ratingFourCount);
             ViewBag.ratingFive = JsonConvert.SerializeObject(ratingFiveCount);
 
-            return View();
-
-        }
-
-        public ActionResult SearchPainLocation(int? id)
-        {
-            // gets a list of DailyPainJournals of a patient for the last 30 days
-            int nOfDays = 30;
-            DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
-            List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
 
             //filters dailyPainJournals from last 30 days and finds all Pain Locations associated 
             List<string> painLocations = dailyPainJournals.Select(j => j.PainLocation).ToList();
 
-            var upperBack = painLocations.Where(j => j.Contains("Upper Back")).ToList();
+            List<string> upperBack = painLocations.Where(j => j.Contains("Upper Back")).ToList();
+            int upperBackCount = upperBack.Count();
 
-            var ratingTwo = painLocations.Where(j => j.Contains("2")).ToList();
-            var ratingThree = painLocations.Where(j => j.Contains("3")).ToList();
-            var ratingFour = painLocations.Where(j => j.Contains("4")).ToList();
-            var ratingFive = painLocations.Where(j => j.Contains("5")).ToList();
-            var ratingFive = painLocations.Where(j => j.Contains("5")).ToList();
-            var ratingFive = painLocations.Where(j => j.Contains("5")).ToList();
+            List<string> lowerBack = painLocations.Where(j => j.Contains("Lower Back")).ToList();
+            int lowerBackCount = lowerBack.Count();
 
-            ViewBag.ratingOne = JsonConvert.SerializeObject(ratingOne);
-            ViewBag.ratingTwo = JsonConvert.SerializeObject(ratingTwo);
-            ViewBag.ratingThree = JsonConvert.SerializeObject(ratingThree);
-            ViewBag.ratingFour = JsonConvert.SerializeObject(ratingFour);
-            ViewBag.ratingFive = JsonConvert.SerializeObject(ratingFive);
+            List<string> neck = painLocations.Where(j => j.Contains("Neck")).ToList();
+            int neckCount = neck.Count();
+
+            List<string> head = painLocations.Where(j => j.Contains("Head")).ToList();
+            int headCount = head.Count();
+
+            List<string> legs = painLocations.Where(j => j.Contains("Legs")).ToList();
+            int legsCount = legs.Count();
+
+            List<string> arms = painLocations.Where(j => j.Contains("Arms")).ToList();
+            int armsCount = arms.Count();
+
+            List<string> shoulders = painLocations.Where(j => j.Contains("Shoulders")).ToList();
+            int shouldersCount = shoulders.Count();
+
+
+            ViewBag.upperBack = JsonConvert.SerializeObject(upperBackCount);
+            ViewBag.lowerBack = JsonConvert.SerializeObject(lowerBackCount);
+            ViewBag.neck = JsonConvert.SerializeObject(neckCount);
+            ViewBag.head = JsonConvert.SerializeObject(headCount);
+            ViewBag.legs = JsonConvert.SerializeObject(legsCount);
+            ViewBag.arms = JsonConvert.SerializeObject(armsCount);
+            ViewBag.shoulders = JsonConvert.SerializeObject(shouldersCount);
+
+
+            //filters dailyPainJournals from last 30 days and finds all AmountOfSleep properties associated 
+            List<string> amountOfSleep = dailyPainJournals.Select(j => j.AmountOfSleep).ToList();
+
+            List<string> oneHour = amountOfSleep.Where(j => j.Contains("1")).ToList();
+            int oneHourCount = oneHour.Count();
+
+            List<string> twoHour = amountOfSleep.Where(j => j.Contains("2")).ToList();
+            int twoHourCount = twoHour.Count();
+
+            List<string> threeHour = amountOfSleep.Where(j => j.Contains("3")).ToList();
+            int threeHourCount = threeHour.Count();
+
+            List<string> fourHour = amountOfSleep.Where(j => j.Contains("4")).ToList();
+            int fourHourCount = fourHour.Count();
+
+            List<string> fiveHour = amountOfSleep.Where(j => j.Contains("5")).ToList();
+            int fiveHourCount = fiveHour.Count();
+
+            List<string> sixHour = amountOfSleep.Where(j => j.Contains("6")).ToList();
+            int sixHourCount = sixHour.Count();
+
+            List<string> sevenHour = amountOfSleep.Where(j => j.Contains("7")).ToList();
+            int sevenHourCount = sevenHour.Count();
+
+            List<string> eightOrMoreHour = amountOfSleep.Where(j => j.Contains("8 or more")).ToList();
+            int eightOrMoreHourCount = eightOrMoreHour.Count();
+
+
+
+            ViewBag.oneHour = JsonConvert.SerializeObject(oneHourCount);
+            ViewBag.twoHour = JsonConvert.SerializeObject(twoHourCount);
+            ViewBag.threeHour = JsonConvert.SerializeObject(threeHourCount);
+            ViewBag.fourHour = JsonConvert.SerializeObject(fourHourCount);
+            ViewBag.fiveHour= JsonConvert.SerializeObject(fiveHourCount);
+            ViewBag.sixHour = JsonConvert.SerializeObject(sixHourCount);
+            ViewBag.sevenHour = JsonConvert.SerializeObject(sevenHourCount);
+            ViewBag.eightOrMoreHour = JsonConvert.SerializeObject(eightOrMoreHourCount);
+
+
+            //filters dailyPainJournals from last 30 days and finds all Activity Levels associated 
+            List<string> activityLevel = dailyPainJournals.Select(j => j.ActivityLevel).ToList();
+
+            List<string> sedentary = activityLevel.Where(j => j.Contains("Sedentary")).ToList();
+            int sedentaryCount = sedentary.Count();
+
+            List<string> moderate = activityLevel.Where(j => j.Contains("Moderate")).ToList();
+            int moderateCount = moderate.Count();
+
+            List<string> high = activityLevel.Where(j => j.Contains("High")).ToList();
+            int highCount = high.Count();
+
+            ViewBag.sedentary = JsonConvert.SerializeObject(sedentaryCount);
+            ViewBag.moderate = JsonConvert.SerializeObject(moderateCount);
+            ViewBag.high = JsonConvert.SerializeObject(highCount);
 
             return View();
 
         }
+
+        //public ActionResult SearchPainLocation(int? id)
+        //{
+        //    // gets a list of DailyPainJournals of a patient for the last 30 days
+        //    int nOfDays = 30;
+        //    DateTime searchDate = DateTime.Today.Subtract(TimeSpan.FromDays(nOfDays));
+        //    List<DailyPainJournal> dailyPainJournals = db.DailyPainJournals.Where(s => s.Patient.PatientId == id && s.LogDate > searchDate).ToList();
+
+        //    //filters dailyPainJournals from last 30 days and finds all Pain Locations associated 
+        //    List<string> painLocations = dailyPainJournals.Select(j => j.PainLocation).ToList();
+
+        //    List<string> upperBack = painLocations.Where(j => j.Contains("Upper Back")).ToList();
+        //    int upperBackCount = upperBack.Count();
+
+        //    List<string> lowerBack = painLocations.Where(j => j.Contains("Lower Back")).ToList();
+        //    int lowerBackCount = lowerBack.Count();
+
+        //    List<string> neck = painLocations.Where(j => j.Contains("Neck")).ToList();
+        //    int neckCount = neck.Count();
+
+        //    List<string> head = painLocations.Where(j => j.Contains("Head")).ToList();
+        //    int headCount = head.Count();
+
+        //    List<string> legs = painLocations.Where(j => j.Contains("Legs")).ToList();
+        //    int legsCount = legs.Count();
+
+        //    List<string> arms = painLocations.Where(j => j.Contains("Arms")).ToList();
+        //    int armsCount = arms.Count();
+
+        //    List<string> shoulders = painLocations.Where(j => j.Contains("Shoulders")).ToList();
+        //    int shouldersCount = shoulders.Count();
+
+
+        //    ViewBag.upperBack = JsonConvert.SerializeObject(upperBackCount);
+        //    ViewBag.lowerBack = JsonConvert.SerializeObject(lowerBackCount);
+        //    ViewBag.neck = JsonConvert.SerializeObject(neckCount);
+        //    ViewBag.head = JsonConvert.SerializeObject(headCount);
+        //    ViewBag.legs = JsonConvert.SerializeObject(legsCount);
+        //    ViewBag.arms = JsonConvert.SerializeObject(armsCount);
+        //    ViewBag.shoulders = JsonConvert.SerializeObject(shouldersCount);
+
+        //    return View();
+
+        //}
 
         // GET: PatientDataViewModel/Details/5
         public ActionResult Details()
