@@ -1,6 +1,7 @@
-﻿@model IEnumerable<PainClinic.Models.ViewModels.PatientRegistrationViewModel>
+﻿@model PainClinic.Models.ViewModels.PatientRegistrationViewModel
 
 @{
+<a href="~/Views/Patients/Index.cshtml">~/Views/Patients/Index.cshtml</a>
     ViewBag.Title = "Index";
 }
 
@@ -17,32 +18,28 @@
         <th>
             @Html.DisplayNameFor(model => model.Patient.LastName)
         </th>
-       
         <th>
-            @Html.DisplayNameFor(model => model.Addresses.StreetAddress)
+            @Html.DisplayNameFor(model => model.Address.StreetAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Addresses.City)
+            @Html.DisplayNameFor(model => model.Address.City)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Addresses.State)
+            @Html.DisplayNameFor(model => model.Address.State)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Addresses.Zipcode)
+            @Html.DisplayNameFor(model => model.Address.Zipcode)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.RxReceived)
-        </th>*@
-        <th></th>
+        
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Patients) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Patient.FirstName)
+            @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Patient.LastName)
+            @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Addresses.StreetAddress)
@@ -56,13 +53,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Addresses.Zipcode)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.RxReceived)
-        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Patient.PatientId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Patient.PatientId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Patient.PatientId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.PatientId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PatientId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PatientId })
         </td>
     </tr>
 }

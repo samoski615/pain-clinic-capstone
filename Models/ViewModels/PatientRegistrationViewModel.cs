@@ -7,9 +7,14 @@ namespace PainClinic.Models.ViewModels
 {
     public class PatientRegistrationViewModel
     {
+        //ViewModel for maintaining patient records
+
         public Patient Patient { get; set; }
-        public Addresses Addresses { get; set; }
-        //public ProviderPatientDirectory Directory { get; set; }
-        public Clinic Clinic { get; set; }
+        public Addresses Address { get; set; }
+        public List<Patient> Patients { get; set; }
+        public List<Addresses> Addresses { get; set; }
+
+        //public StatesDictionary States { get; set; }  
+
     }
 }

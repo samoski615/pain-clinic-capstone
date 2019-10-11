@@ -10,41 +10,67 @@ namespace PainClinic.Models
 {
     public class Patient
     {
+       
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public Guid PatientId { get; set; }
-        public ICollection<Provider> Providers { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PatientId { get; set; }
 
-        [ForeignKey("Clinic")]
+        //public virtual ICollection<DailyPainJournal> DailyLogs { get; set; }
+        //public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        //public virtual ICollection<Addresses> Addresses { get; set; }
+
+        //[Display(Name = "First Name")]
+        [Required]
+        public string FirstName { get; set; }
+
+        //[Display(Name = "Last Name")]
+        [Required]
+        public string LastName { get; set; }
+
+        [Display(Name = "Prescription Requested")]
         [HiddenInput(DisplayValue = false)]
-        public int? ClinicId { get; set; }
-        public Clinic Clinic { get; set; }
+        public bool IsRxRequested { get; set; }
+
+        [Display(Name = "Prescription Filled")]
+        [HiddenInput(DisplayValue = false)]
+        public bool IsRxFilled { get; set; }
+
+        [Display(Name = "Balance")]
+        public double PatientBalance { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        [HiddenInput(DisplayValue = false)]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         [ForeignKey("Addresses")]
         [HiddenInput(DisplayValue = false)]
         public int? AddressesId { get; set; }
         public Addresses Addresses { get; set; }
 
-        [ForeignKey("DailyLog")]
-        [HiddenInput(DisplayValue = false)]
-        public int? DailyLogId { get; set; }
-        public DailyLog DailyLog { get; set; }
 
-        [Display(Name = "First Name")]
-        [Required]
-        public string FirstName { get; set; }
+        //[ForeignKey("Provider")]
+        //[InverseProperty("Provider")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int? ProviderId { get; set; }
+        //public Provider Provider { get; set; }
 
-        [Display(Name = "Last Name")]
-        [Required]
-        public string LastName { get; set; }
+        //[ForeignKey("Clinic")]
+        //[InverseProperty("Clinic")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int? ClinicId { get; set; }
+        //public Clinic Clinic { get; set; }
 
-        [Display(Name = "Request Received")]
-        public bool RxReceived { get; set; }
+        //[ForeignKey("DailyLog")]
+        //[InverseProperty("DailyLog")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int? DailyPainJournalId { get; set; }
+        //public DailyPainJournal DailyPainJournals { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        [HiddenInput(DisplayValue = false)]
-        public string ApplicationId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+
+        //public virtual ICollection<Provider> Providers { get; set; }
+
     }
 
 }

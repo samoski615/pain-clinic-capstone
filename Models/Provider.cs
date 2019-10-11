@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PainClinic.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,13 +13,11 @@ namespace PainClinic.Models
     {
         [Key]
         [HiddenInput(DisplayValue = false)]
-        public Guid ProviderId { get; set; }
-        public ICollection<Patient> Patients { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProviderId { get; set; }
 
-        [ForeignKey("Clinic")]
-        [HiddenInput(DisplayValue = false)]
-        public int? ClinicId { get; set; }
-        public Clinic Clinic { get; set; }
+        // public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
+        //public PatientDataViewModel PatientDataVM { get; set; }
 
         [Display(Name = "Prefix")]
         public string Prefix { get; set; }
@@ -31,12 +30,35 @@ namespace PainClinic.Models
         [Required]
         public string LastName { get; set; }
 
-        [Display(Name = "Request Received")]
-        public bool RxReceived { get; set; }
+        [Display(Name = "Prescription Requested")]
+        [HiddenInput(DisplayValue = false)]
+        public bool IsRxRequested { get; set; }
+
+        [Display(Name = "Prescription Filled")]
+        [HiddenInput(DisplayValue = false)]
+        public bool IsRxFilled { get; set; }
+
+        //[Display(Name = "Balance")]
+        //public double PatientBalance { get; set; }
 
         [ForeignKey("ApplicationUser")]
         [HiddenInput(DisplayValue = false)]
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        //[DataType(DataType.Date)]
+        //public DateTime SearchDate { get; set; }
+        
+        //[ForeignKey("Patient")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int? PatientId { get; set; }
+        //public Patient Patient { get; set; }
+
+        //[HiddenInput(DisplayValue = false)]
+        //public int? ClinicId { get; set; }
+        //public Clinic Clinic { get; set; }
+
+        //public virtual ICollection<Patient> Patients { get; set; }
+
     }
 }

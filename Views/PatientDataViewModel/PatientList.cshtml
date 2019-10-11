@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PainClinic.Models.Patient>
+
+@{
+    ViewBag.Title = "Patient List";
+}
+
+<h2>List of Patients</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            <div class="form-group">
+                @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.DropDownList(model => model, new SelectList(ViewBag.patients), "Rate your pain: ", htmlAttributes: new { @class = "form-control" })*@
+                    @*@Html.EditorFor(model => model., new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.ValidationMessageFor(model => model, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.ActionLink("Pain Log Statistics", "SearchStatistics", "PatientDataViewModel", new { id = item.PatientId }, null) |
+                @Html.ActionLink("Prescription Request", "PrescriptionRequest", "PatientDataViewModel", new { id = item.PatientId }, null) |   
+                @Html.ActionLink("Update Balance", "UpdateCustomerBalance", "PatientDataViewModel", new { id = item.PatientId }, null)
+            </td>
+        </tr>
+    }
+
+</table>

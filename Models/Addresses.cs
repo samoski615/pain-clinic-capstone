@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,24 +13,32 @@ namespace PainClinic.Models
         [Key]
         [HiddenInput(DisplayValue = false)]
         public int AddressesId { get; set; }
-        
-        [Display(Name = "Clinic Name")]
-        public string ClinicName { get; set; }  
 
-        [Display(Name = "Addresses")]
-        [Required]
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
         [Display(Name = "City")]
-        [Required]
         public string City { get; set; }
 
-        [Display(Name = "State Abbriviation")]
-        [Required]
+        [Display(Name = "State Abbreviation")]
         public string State { get; set; }
 
         [Display(Name = "Zipcode")]
-        [Required]
         public string Zipcode { get; set; }
+
+        [NotMapped]
+        public double Latitude { get; set; }
+        [NotMapped ]
+        public double Longitude { get; set; }
+
+        //[NotMapped]
+        //public virtual ICollection<Patient> Patients { get; set; }
+        // public virtual ICollection<Clinic>  Clinics { get; set; }
+
+        //public int? PatientId { get; set; }
+        //public virtual Patient Patient { get; set; }
+
+        //public int? StatesDictionaryId { get; set; }
+        //public virtual StatesDictionary StatesDictionary { get; set; }
     }
 }

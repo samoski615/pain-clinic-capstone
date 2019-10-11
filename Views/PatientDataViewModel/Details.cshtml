@@ -1,0 +1,92 @@
+﻿@model PainClinic.Models.ViewModels.PatientDataViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2> 
+
+<div> @*//figure out how I want information layed out on this page*@
+    <h4>Patient</h4>
+    <hr />
+    <table class="table">
+        @*dl class="form-horizontal">*@
+        @Html.HiddenFor(model => model.Patient.PatientId)
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.FirstName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Patient.LastName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.SearchDate)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.DailyPainJournal.SearchDate)
+            </td>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.PainRating)
+            </th>
+
+            <th>
+                @Html.DisplayFor(model => model.DailyPainJournal.PainRating)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.PainLocation)
+            </th>
+
+            <th>
+                @Html.DisplayFor(model => model.DailyPainJournal.PainLocation)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.AmountOfSleep)
+            </th>
+
+            <th>
+                @Html.DisplayFor(model => model.DailyPainJournal.AmountOfSleep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DailyPainJournal.ActivityLevel)
+            </th>
+
+
+
+            <td>
+                @Html.DisplayFor(model => model.Patient.FirstName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Patient.LastName)
+            </td>
+
+
+
+
+
+            <th>
+                @Html.DisplayFor(model => model.DailyPainJournal.ActivityLevel)
+            </th>
+            @*<dt>
+            @Html.DisplayNameFor(model => model.DailyPainJournal.DailyActivities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DailyPainJournal.DailyActivities)
+        </dd>*@
+        </tr>
+            @*</dl>*@
+        @*<p>Value Trying to Pass: @Html.Raw(Model.Patient.PatientId)</p>*@
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Patient.PatientId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </table>
+
+</div>

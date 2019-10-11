@@ -19,15 +19,22 @@ namespace PainClinic.Models
         public int? AddressesId { get; set; }
         public Addresses Addresses { get; set; }
 
+        [Display(Name = "Clinic Name")]
+        public string ClinicName { get; set; }
+
+        // public virtual ICollection<ClinicDirectory> ClinicDirectories { get; set; }
 
 
-        //public Clinic()
-        //{
-        //    this.Name = "Placeholder Until I Come Up With A Good Name";
-        //    this.Address = "959 W Mayfair Rd";
-        //    this.City = "Milwaukee";
-        //    this.State = "WI";
-        //    this.Zipcode = "53226";
-        //}
+        //[ForeignKey("Provider")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int ProviderId { get; set; }
+        //public Provider Provider { get; set; }
+
+        //[ForeignKey("Patient")]
+        //[HiddenInput(DisplayValue = false)]
+        //public int PatientId { get; set; }
+        //public Patient Patient { get; set; }
+
+        //public virtual ICollection<Provider> Providers { get; set; }
     }
 }

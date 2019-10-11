@@ -1,0 +1,36 @@
+
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport"  charset="utf-8" content="width=device-width"/>
+        <title>Search</title>
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    </head>
+    <body>
+    <div>
+        <h1>Test Header</h1>
+        @ViewBag.ratingOne
+        @ViewBag.ratingTwo
+        @ViewBag.ratingThree
+        @ViewBag.ratingFour
+        @ViewBag.ratingFive
+        <div>
+            <h2>DailyPainJournalId</h2> - <h2 id="jId"></h2>
+            <h2>PainRating</h2> - <h2 id="jPainRating"></h2>
+            <h2>PainLocation</h2> - <h2 id="jPainLocation"></h2>
+            <h2>AmountOfSleep</h2> - <h2 id="jAmountOfSleep"></h2>
+            <h2>ActivityLevel</h2> - <h2 id="jActivityLevel"></h2>
+            <h2>LogDate</h2> - <h2 id="jLogDate"></h2>
+        </div>
+
+        <input type="button" id="btnClick" onclick="BtnClick()" value="Click Me" />
+    </div>
+  
+</body>
+</html>
+

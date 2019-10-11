@@ -81,7 +81,7 @@ namespace PainClinic.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl); //here might be the problem with routing shared views -- change/check route path
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -166,6 +166,7 @@ namespace PainClinic.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //////////ASSIGN ROLES TO USERS HERE/////////////
                     if (model.UserRoles == "Patient")
                     {
@@ -176,7 +177,7 @@ namespace PainClinic.Controllers
                         return RedirectToAction("Create", "Providers");
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Details");
                 }
                 ViewBag.Name = new SelectList(db.Roles.ToList(), "Name", "Name");
                 AddErrors(result);

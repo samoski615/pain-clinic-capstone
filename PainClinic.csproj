@@ -45,17 +45,77 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Mvc.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Routing.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Stripe.net, Version=31.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Stripe.net.31.1.0\lib\net45\Stripe.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -100,9 +160,6 @@
       <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -113,12 +170,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -168,31 +219,96 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Migrations\201910100421445_nextMigration.cs" />
+    <Compile Include="Migrations\201910100421445_nextMigration.Designer.cs">
+      <DependentUpon>201910100421445_nextMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101438530_nextMigration1.cs" />
+    <Compile Include="Migrations\201910101438530_nextMigration1.Designer.cs">
+      <DependentUpon>201910101438530_nextMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101457277_nextMigration2.cs" />
+    <Compile Include="Migrations\201910101457277_nextMigration2.Designer.cs">
+      <DependentUpon>201910101457277_nextMigration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101502513_nextMigration3.cs" />
+    <Compile Include="Migrations\201910101502513_nextMigration3.Designer.cs">
+      <DependentUpon>201910101502513_nextMigration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110336003_nextMigration4.cs" />
+    <Compile Include="Migrations\201910110336003_nextMigration4.Designer.cs">
+      <DependentUpon>201910110336003_nextMigration4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110407272_nextMigration5.cs" />
+    <Compile Include="Migrations\201910110407272_nextMigration5.Designer.cs">
+      <DependentUpon>201910110407272_nextMigration5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110408265_nextMigration6.cs" />
+    <Compile Include="Migrations\201910110408265_nextMigration6.Designer.cs">
+      <DependentUpon>201910110408265_nextMigration6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110529121_nextMigration7.cs" />
+    <Compile Include="Migrations\201910110529121_nextMigration7.Designer.cs">
+      <DependentUpon>201910110529121_nextMigration7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110640440_nextMigration8.cs" />
+    <Compile Include="Migrations\201910110640440_nextMigration8.Designer.cs">
+      <DependentUpon>201910110640440_nextMigration8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110913504_nextMigration9.cs" />
+    <Compile Include="Migrations\201910110913504_nextMigration9.Designer.cs">
+      <DependentUpon>201910110913504_nextMigration9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PatientAcctMgmtViewModelController.cs" />
+    <Compile Include="Controllers\PatientDataViewModelController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Migrations\201910041555058_migration1.cs" />
+    <Compile Include="Migrations\201910041555058_migration1.Designer.cs">
+      <DependentUpon>201910041555058_migration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041704152_migration2.cs" />
+    <Compile Include="Migrations\201910041704152_migration2.Designer.cs">
+      <DependentUpon>201910041704152_migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041914269_migration3.cs" />
+    <Compile Include="Migrations\201910041914269_migration3.Designer.cs">
+      <DependentUpon>201910041914269_migration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910070459519_test78.cs" />
+    <Compile Include="Migrations\201910070459519_test78.Designer.cs">
+      <DependentUpon>201910070459519_test78.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ClinicDirectory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909260314207_newMigration.cs" />
-    <Compile Include="Migrations\201909260314207_newMigration.Designer.cs">
-      <DependentUpon>201909260314207_newMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Addresses.cs" />
-    <Compile Include="Models\ViewModels\PatientRegistrationViewModel.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Key.cs" />
+    <Compile Include="Models\LocationInfo.cs" />
+    <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
+    <Compile Include="Models\StripeSettings.cs" />
+    <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
-    <Compile Include="Models\DailyLog.cs" />
+    <Compile Include="Models\DailyPainJournal.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\ViewModels\IdentityModels.cs" />
     <Compile Include="Models\ViewModels\ListsViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Patient.cs" />
-    <Compile Include="Models\ViewModels\PatientDailyLogViewModel.cs" />
+    <Compile Include="Models\ViewModels\PatientAcctMgmtViewModel.cs" />
+    <Compile Include="Models\ViewModels\PatientDataViewModel.cs" />
+    <Compile Include="Models\ViewModels\PatientRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -201,18 +317,70 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\DailyPainJournalLogo.png" />
+    <Content Include="Content\Images\DailyPainJournalLogo2.png" />
+    <Content Include="Content\Images\health-care-clipart-health-care-professionals-clipart-1.jpg" />
+    <Content Include="Content\Images\proxy.duckduckgo.com.jpg" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Data\Uploads\Patient_Registration_And_Pain_Chart.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -264,10 +432,27 @@
     <Content Include="Views\Providers\Details.cshtml" />
     <Content Include="Views\Providers\Edit.cshtml" />
     <Content Include="Views\Providers\Index.cshtml" />
-    <Content Include="Views\Patients\DailyLog.cshtml" />
+    <Content Include="Views\PatientDataViewModel\CreateDailyLog.cshtml" />
+    <Content Include="Views\PatientDataViewModel\Details.cshtml" />
+    <Content Include="Views\Patients\PatientDetails.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\GoogleMapsAPI.cshtml" />
+    <Content Include="Views\PatientDataViewModel\PatientsDailyLogs.cshtml" />
+    <Content Include="Views\PatientDataViewModel\DailyLogList.cshtml" />
+    <Content Include="Views\SearchByPainRating.cshtml" />
+    <Content Include="Views\PatientDataViewModel\Edit.cshtml" />
+    <Content Include="Views\PatientDataViewModel\PatientList.cshtml" />
+    <Content Include="Views\Search.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\Uploads.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\Downloads.cshtml" />
+    <Content Include="Views\PatientDataViewModel\SearchStatistics.cshtml" />
+    <Content Include="Views\Chat\Chat.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\CreateRxRequest.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\PayBalance.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\GetClinicDirections.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\ClinicLocation.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Downloads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -286,8 +471,47 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909260314207_newMigration.resx">
-      <DependentUpon>201909260314207_newMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910041555058_migration1.resx">
+      <DependentUpon>201910041555058_migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041704152_migration2.resx">
+      <DependentUpon>201910041704152_migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041914269_migration3.resx">
+      <DependentUpon>201910041914269_migration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910070459519_test78.resx">
+      <DependentUpon>201910070459519_test78.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910100421445_nextMigration.resx">
+      <DependentUpon>201910100421445_nextMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101438530_nextMigration1.resx">
+      <DependentUpon>201910101438530_nextMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101457277_nextMigration2.resx">
+      <DependentUpon>201910101457277_nextMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101502513_nextMigration3.resx">
+      <DependentUpon>201910101502513_nextMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110336003_nextMigration4.resx">
+      <DependentUpon>201910110336003_nextMigration4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110407272_nextMigration5.resx">
+      <DependentUpon>201910110407272_nextMigration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110408265_nextMigration6.resx">
+      <DependentUpon>201910110408265_nextMigration6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110529121_nextMigration7.resx">
+      <DependentUpon>201910110529121_nextMigration7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110640440_nextMigration8.resx">
+      <DependentUpon>201910110640440_nextMigration8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110913504_nextMigration9.resx">
+      <DependentUpon>201910110913504_nextMigration9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
