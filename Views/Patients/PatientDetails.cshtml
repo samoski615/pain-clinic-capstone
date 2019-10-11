@@ -27,12 +27,10 @@
         </dd>
 
         <dt>
-            @Html.CheckBoxFor(m => m.Patient.RxRequested, false)
+            @Html.CheckBoxFor(m => m.Patient.IsRxRequested)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address.StreetAddress)
-        </dd>
+       
 
         @*<dt>
             @Html.DisplayNameFor(model => model.Address.City)

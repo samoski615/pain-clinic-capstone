@@ -82,6 +82,7 @@ namespace PainClinic.Controllers
         //}
 
 
+       
         public ActionResult Uploads()
         {
             //allow patient to upload forms
@@ -177,10 +178,14 @@ namespace PainClinic.Controllers
                 string currentUserId = User.Identity.GetUserId();
                 Patient currentPatient = db.Patients.Where(p => p.ApplicationId == currentUserId).FirstOrDefault();
                 viewModel.Prescription.PatientId = currentPatient.PatientId;
-                viewModel.Patient.RxRequested = true;
-                viewModel.Patient.RxRequested = currentPatient.RxRequested;
+                currentPatient.IsRxRequested = true;
+                db.Patients.Add(currentPatient);
+                db.SaveChanges();
+                //viewModel.Prescription.Patient.RxRequested = currentPatient.RxRequested;
                 db.Prescriptions.Add(viewModel.Prescription);
                 db.SaveChanges();
+
+                //ViewBag.RxRequested = currentPatient.RxRequested;
             }
 
             else if (!ModelState.IsValid)

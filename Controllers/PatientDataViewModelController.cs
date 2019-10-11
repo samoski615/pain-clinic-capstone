@@ -325,10 +325,14 @@ namespace PainClinic.Controllers
 
         //}
 
-        //public ActionResult UpdateCustomerBalance(int? id)
-        //{
-
-        //}
+        public ActionResult UpdateCustomerBalance(int? id)
+        {
+            Patient currentPatient = db.Patients.Where(p => p.PatientId == id).FirstOrDefault();
+            currentPatient.PatientBalance += 120.00;
+            //db.Patients.Add(currentPatient);
+            db.SaveChanges();
+            return RedirectToAction("PatientList");
+        }
     }      
    
 }

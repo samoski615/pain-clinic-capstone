@@ -233,6 +233,18 @@
     <Compile Include="Migrations\201910101502513_nextMigration3.Designer.cs">
       <DependentUpon>201910101502513_nextMigration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910110336003_nextMigration4.cs" />
+    <Compile Include="Migrations\201910110336003_nextMigration4.Designer.cs">
+      <DependentUpon>201910110336003_nextMigration4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110407272_nextMigration5.cs" />
+    <Compile Include="Migrations\201910110407272_nextMigration5.Designer.cs">
+      <DependentUpon>201910110407272_nextMigration5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110408265_nextMigration6.cs" />
+    <Compile Include="Migrations\201910110408265_nextMigration6.Designer.cs">
+      <DependentUpon>201910110408265_nextMigration6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PatientAcctMgmtViewModelController.cs" />
@@ -415,6 +427,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910101502513_nextMigration3.resx">
       <DependentUpon>201910101502513_nextMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110336003_nextMigration4.resx">
+      <DependentUpon>201910110336003_nextMigration4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110407272_nextMigration5.resx">
+      <DependentUpon>201910110407272_nextMigration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110408265_nextMigration6.resx">
+      <DependentUpon>201910110408265_nextMigration6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
