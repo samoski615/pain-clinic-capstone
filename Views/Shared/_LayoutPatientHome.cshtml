@@ -25,11 +25,11 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Profile", "Details", "Patients")</li>
-                    <li>@Html.ActionLink("Daily Journals", "DailyLogList", "PatientDataViewModel")</li>
+                    @*<li>@Html.ActionLink("Daily Journals", "DailyLogList", "PatientDataViewModel")</li>*@
                     <li>@Html.ActionLink("Create New Log", "CreateDailyLog", "PatientDataViewModel")</li>
                     <li>@Html.ActionLink("Request Prescription", "CreateRxRequest", "PatientAcctMgmtViewModel")</li>
                     <li>@Html.ActionLink("Live Chat", "Chat", "Chat")</li>
-                    <li>@Html.ActionLink("Clinic Map", "GetClinicDirections", "PatientAcctMgmtViewModel")</li>
+                    <li>@Html.ActionLink("Clinic Location", "ClinicLocation", "PatientAcctMgmtViewModel")</li>
                     <li>@Html.ActionLink("Pre-Register", "Uploads", "PatientAcctMgmtViewModel")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

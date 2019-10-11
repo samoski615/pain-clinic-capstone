@@ -30,6 +30,9 @@ namespace PainClinic.Models
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<Addresses> Addresses { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet <Venue> Venues { get; set; }
+        public DbSet<Country> Countries { get; set; }
+
 
         public static ApplicationDbContext Create()
         {
