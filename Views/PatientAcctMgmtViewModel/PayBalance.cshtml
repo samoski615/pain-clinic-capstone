@@ -1,0 +1,54 @@
+﻿@model PainClinic.Models.Patient
+
+@{
+    ViewBag.Title = "Pay Balance";
+}
+<head>
+    <script src="https://js.stripe.com/v2/"></script>
+
+</head>
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="form-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientBalance)
+        </dt>
+
+        <dt>
+            @Html.DisplayFor(model => model.PatientBalance)
+        </dt>
+    </dl>
+</div>
+<body>
+    <form action="/Payment/Charge" method="POST">
+        <article>
+            <label>Your Balance</label>
+        </article>
+        <script src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="@ViewBag.StripePublishKey"
+                data-locale="auto"
+                data-description="Sample Charge"
+                data-amount="@ViewBag.Patient">
+        </script>
+    </form>
+</body>
+  var stripe = Stripe'pk_test_GGKgYOyWOH5jcvN77SSjfXVT006hcxbAnV');
+CallStripe.setPublishableKey(stripe);

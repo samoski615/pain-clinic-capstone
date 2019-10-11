@@ -12,5 +12,6 @@ namespace PainClinic.Models.ViewModels
         public LocationInfo LocationInfo { get; set; }
         public Provider Provider { get; set; }
         public Prescription Prescription { get; set; }
+        public StripeSettings StripeSettings { get; set; }
     }
 }

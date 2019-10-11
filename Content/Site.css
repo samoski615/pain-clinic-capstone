@@ -24,6 +24,12 @@ textarea {
 }
 
 .providers {
-    background-image: url("Images/proxy.duckduckgo.com.jpg");
+    background-image: url("Images/health-care-clipart-health-care-professionals-clipart-1.jpg");
     background-repeat: no-repeat;
+}
+
+.body-content {
+    display: flex;
+    justify-content: right;
+    align-items: inherit;
 }

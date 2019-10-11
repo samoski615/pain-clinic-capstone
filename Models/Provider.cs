@@ -38,8 +38,8 @@ namespace PainClinic.Models
         [HiddenInput(DisplayValue = false)]
         public bool IsRxFilled { get; set; }
 
-        [Display(Name = "Balance")]
-        public double PatientBalance { get; set; }
+        //[Display(Name = "Balance")]
+        //public double PatientBalance { get; set; }
 
         [ForeignKey("ApplicationUser")]
         [HiddenInput(DisplayValue = false)]

@@ -12,6 +12,8 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.IO;
 using Microsoft.AspNet.Identity;
+using Stripe;
+using System.Configuration;
 
 namespace PainClinic.Controllers
 {
@@ -194,6 +196,46 @@ namespace PainClinic.Controllers
             }
             return View("~/Views/Patients/PatientDetails.cshtml");
 
+        }
+
+        public ActionResult PayBalance(int? id)
+        {
+            var patient = db.Patients.Where(p => p.PatientId == id).Select(p=> p.PatientBalance);
+            var stripePublishKey = ConfigurationManager.AppSettings["pk_test_GGKgYOyWOH5jcvN77SSjfXVT006hcxbAnV"];
+            ViewBag.StripePublishKey = stripePublishKey;
+            ViewBag.Patient = patient;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Charge(string stripeEmail, string stripeToken)
+        {
+            var customers = new CustomerService();
+            var charges = new ChargeService();
+            var customer = customers.Create(new CustomerCreateOptions
+            {
+                Email = stripeEmail,
+                Source = stripeToken
+            });
+
+            var currentUserId = User.Identity.GetUserId();
+            var patient = db.Patients.FirstOrDefault(m => m.ApplicationId== currentUserId);
+
+            var charge = charges.Create(new ChargeCreateOptions
+            {
+                Amount = Convert.ToInt64(patient.PatientBalance),
+                Description = "Sample Charge",
+                Currency = "usd",
+                Customer = patient.PatientId.ToString()
+            }); 
+            patient.PatientBalance = 0;
+            db.SaveChanges();
+            return View();
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

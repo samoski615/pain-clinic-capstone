@@ -82,6 +82,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Stripe.net, Version=31.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Stripe.net.31.1.0\lib\net45\Stripe.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -245,6 +248,14 @@
     <Compile Include="Migrations\201910110408265_nextMigration6.Designer.cs">
       <DependentUpon>201910110408265_nextMigration6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910110529121_nextMigration7.cs" />
+    <Compile Include="Migrations\201910110529121_nextMigration7.Designer.cs">
+      <DependentUpon>201910110529121_nextMigration7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910110640440_nextMigration8.cs" />
+    <Compile Include="Migrations\201910110640440_nextMigration8.Designer.cs">
+      <DependentUpon>201910110640440_nextMigration8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChatHub.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\PatientAcctMgmtViewModelController.cs" />
@@ -279,6 +290,7 @@
     <Compile Include="Models\LocationInfo.cs" />
     <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\StatesDictionary.cs" />
+    <Compile Include="Models\StripeSettings.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Clinic.cs" />
     <Compile Include="Models\DailyPainJournal.cs" />
@@ -299,6 +311,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\DailyPainJournalLogo.png" />
+    <Content Include="Content\Images\DailyPainJournalLogo2.png" />
+    <Content Include="Content\Images\health-care-clipart-health-care-professionals-clipart-1.jpg" />
     <Content Include="Content\Images\proxy.duckduckgo.com.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -383,6 +397,7 @@
     <Content Include="Views\PatientDataViewModel\SearchStatistics.cshtml" />
     <Content Include="Views\Chat\Chat.cshtml" />
     <Content Include="Views\PatientAcctMgmtViewModel\CreateRxRequest.cshtml" />
+    <Content Include="Views\PatientAcctMgmtViewModel\PayBalance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Downloads\" />
@@ -436,6 +451,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910110408265_nextMigration6.resx">
       <DependentUpon>201910110408265_nextMigration6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110529121_nextMigration7.resx">
+      <DependentUpon>201910110529121_nextMigration7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110640440_nextMigration8.resx">
+      <DependentUpon>201910110640440_nextMigration8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
